@@ -29,7 +29,13 @@
 					<td>{{ dragon.sexe }}</td>
 					<td>{{ dragon.longueur }}</td>
 					<td>{{ dragon.ecailles }}</td>
-					<td>N{{ dragon.cracheFeu }}</td>
+					<td>
+						{% if dragon.cracheFeu == "N" %}
+						Non
+						{% else %}
+						Oui
+						{% endif %}
+					</td>
 					<td>{{ dragon.enAmour }}</td>
 				</tr>
 			{% endfor %}
