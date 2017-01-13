@@ -20,6 +20,6 @@ $app->register(new Silex\Provider\AssetServiceProvider(), array(
 ));
 
 // Register services.
-$app['dao.dragon'] = function ($app) {
-    return new LilleBio\DAO\DragonDAO($app['db']);
+$app['model.dragon'] = function ($app) {
+    return new LilleBio\Model\Dragon($app['db']);
 };
