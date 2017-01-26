@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<link href="{{ asset('/lib/knakcss.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
+	</head>
+	<body>
+
+		<div id="container">
+
+			{{ include("default/header.html.twig") }}
+
+			<div id="main_content">
+				{% block content %}{% endblock %}
+			</div>
+
+			{{ include("default/header.html.twig") }}
+
+		</div>
+
+	</body>
+</html>
