@@ -1,0 +1,121 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*-----Parties accueil-----*/
+
+@font-face {
+  font-family: 'SegoePrint';
+  src: url('font/SegoePrint.eot?#iefix') format('embedded-opentype'),url('font/SegoePrint.woff') format('woff'), url('font/SegoePrint.ttf')  format('truetype'), url('font/SegoePrint.svg#SegoePrint') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+.boutton1{
+	 font-family: Arial,sans-serif;
+     font-size: 1.1em;
+     width: 200px;
+     height: 30px;
+     padding-top: 7px; /*permet le centrage vertical*/
+     text-align: center;
+     color: white;
+     background: #339933;
+}
+
+.boutton1:hover{
+     color:black;
+     background: #339933;
+}
+
+.boutton1:active{
+     color: white;
+     background : black;
+}
+
+.titre {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:  1.2em;
+	font-weight: bold;
+	color :#339933;
+}
+
+.soustitre{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:  0.9em;
+	font-weight: bold;
+	color :  black;
+}
+
+
+/*-----Les liens-----*/
+
+a {
+		text-decoration:none;
+		color : black;
+	}
+
+
+ header a, footer a {
+		text-decoration:none;
+		color : white;
+	}
+
+a:hover{
+	color : black;
+}
+
+
+/*-----Body-----*/
+
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+
+
+
+/* -----Header----- */
+
+
+header{
+	background-color :#339933;
+	width:991px;
+	height : 74px;
+}
+
+
+nav{
+	font-family:  Arial, Helvetica, sans-serif;
+	color : white;
+}
+
+
+/*-----Moteur de recherche-----*/
+
+#recherche {
+	height: 478 px;
+	background-image: url("images/banniere_moteur.jpg");
+	background-repeat: no-repeat;
+}
+
+#slogan{
+	font-family: "SegoePrint";
+	font-weight: bold;
+	font-size: 3em;
+	color : white;
+	letter-spacing: -4px;
+}
+
+
+
+
+/*-----Footer----- */
+
+footer{
+	
+	background-color :#339933;
+	width:991px;
+	height : 74px;
+}
+
+
