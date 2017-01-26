@@ -18,5 +18,10 @@ $app->get('/aide-utilisateurs', function () use ($app) {
 	return $app['twig']->render('aide-utilisateur.html.twig');
 })->bind('aide_utilisateurs');
 
+// Restaurant
+$app->get('/restaurant', function () use ($app) {
+	return $app['twig']->render('restaurant.html.twig');
+})->bind('restaurant');
+
 
 
