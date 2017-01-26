@@ -1,6 +1,47 @@
-{% extends 'layout.html.twig' %}
-{% block content %}
-	<h1>Page d'accueil du site !</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Accueil</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+	<?php include "header.php"; ?>
+   
+   <section id="recherche">
+           <img src="images/Logo_home_page.png" alt="logo Lille  Bio"/>
+           <p id="slogan">Le slogan commercial</p>
+    </section>
 
-	<a href="{{ path('dragon_liste') }}">Accéder à la liste</a>
-{% endblock %}
+    <section id="dernier">
+        <h1 class="titre">Les derniers</h>
+        <hr>
+    </section>
+
+     <section id="categorie">
+        <h1 class="titre">Catégories</h1>
+        <hr>
+    </section>
+
+    <section id="comment">
+        <h1 class="titre">Comment ça marche ?</h1>
+        <hr>
+        <img src="images/01_Recherche.png" alt="Aide recherche un restaurant"/>
+        <img src="images/02_Date.png" alt="Aide calendrier"/>
+        <img src="images/03_couverts.png" alt="Aide nombre de couverts"/>
+        <img src="images/04_envoyer.png" alt="Aide envoyer la réservation"/>
+        <img src="images/05_Modifier.png" alt="Aide envoyer la réservation"/>
+        <img src="images/06_Payer.png" alt="Aide payer plus tard"/>
+    </section>
+    
+     <section id="restaurateur">
+        <h1 class="titre">Vous êtes restaurateur ?</h1>
+        <hr>
+        <a href=""><img src="images/Banniere_restaurateur.jpg" alt="Vous êtes restaurateur"/></a>
+
+    </section>
+    
+    <?php include "footer.php"; ?>
+</body>
+
+</html>
