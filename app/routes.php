@@ -2,7 +2,10 @@
 
 // Home page
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig');
+	// Requete qui récupère les trois derniers restau avec leurs images et catégories
+	$troisDerniersRestau = $app['model.restaurant']->troisDerniersRestau();
+	// Appel de la vue page d'accueil
+    return $app['twig']->render('index.html.twig', array('listeRestau' => $troisDerniersRestau));
 })->bind('home');
 
 // Liste des dragons

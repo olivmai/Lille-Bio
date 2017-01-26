@@ -20,6 +20,6 @@ $app->register(new Silex\Provider\AssetServiceProvider(), array(
 ));
 
 // Register services.
-$app['model.dragon'] = function ($app) {
-    return new LilleBio\Model\Dragon($app['db']);
+$app['model.restaurant'] = function ($app) {
+    return new LilleBio\Model\Restaurant($app['db']);
 };

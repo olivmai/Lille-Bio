@@ -1,13 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-
-/*----- Layout -----*/
-#container{
-	max-width: 991px;
-	margin: auto;
-}
-/*-----Parties accueil-----*/
-
 @font-face {
   font-family: 'SegoePrint';
   src: 	url('/LilleBio/web/font/SegoePrint.eot?#iefix') format('embedded-opentype'),
@@ -18,6 +10,57 @@
   font-style: normal;
 
 }
+/*-----Body-----*/
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #252628;
+}
+/*----- Layout -----*/
+#container{
+	max-width: 991px;
+	margin: auto;
+}
+a{
+	text-decoration:none;
+	color: #252628;
+}
+a:hover{
+	color : black;
+}
+a.btn{
+	text-decoration: none;
+	padding: 10px 15px;
+	border: 1px solid #339933;
+	background-color: #339933;
+	color: #fff;
+}
+
+/*===========================*/
+/*========== HEADER =========*/
+/*===========================*/
+header{
+	background-color :#339933;
+	width:991px;
+	height : 74px;
+}
+
+/*------ NAV -------*/
+
+nav{
+	font-family:  Arial, Helvetica, sans-serif;
+	color : white;
+}
+
+/*-----Les liens-----*/
+
+header a, footer a {
+	text-decoration:none;
+	color : white;
+}
+/*===========================*/
+/*======= PAGE D'ACCUEIL ====*/
+/*===========================*/
+
 .boutton1{
 	 font-family: Arial,sans-serif;
      font-size: 1.1em;
@@ -41,9 +84,14 @@
 
 .titre {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size:  1.2em;
 	font-weight: bold;
 	color :#339933;
+	text-align: center;
+	margin-top: 35px;
+}
+
+.titre.accueil{
+	margin-top: 70px;
 }
 
 .soustitre{
@@ -52,55 +100,6 @@
 	font-weight: bold;
 	color :  black;
 }
-
-#comment img{
-	max-width: 100px;
-	max-height: 100px;
-}
-
-
-/*-----Les liens-----*/
-
-a {
-		text-decoration:none;
-		color : black;
-	}
-
-
-header a, footer a {
-		text-decoration:none;
-		color : white;
-	}
-
-a:hover{
-	color : black;
-}
-
-
-/*-----Body-----*/
-
-
-body{
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-
-
-/* -----Header----- */
-
-
-header{
-	background-color :#339933;
-	width:991px;
-	height : 74px;
-}
-
-
-nav{
-	font-family:  Arial, Helvetica, sans-serif;
-	color : white;
-}
-
 
 /*-----Moteur de recherche-----*/
 
@@ -124,7 +123,47 @@ nav{
 	padding-bottom: 80px;
 }
 
-/*----- Page aide utilisateurs -----*/
+/*---- Section Trois derniers ----*/
+section#dernier{
+	text-align: center;
+}
+section#dernier .btn{
+	margin-top: 35px;
+}
+.restau h4{
+	margin-bottom: 10px;
+}
+.restau h4 a{
+	color :#339933;
+}
+p.lastRestau{
+	text-align: left;
+	margin-top: 3px;
+}
+
+/*---- Section COMMENT ------*/
+
+#comment img{
+	max-width: 100px;
+	max-height: 100px;
+}
+
+/*----- Section RESTAURATEUR -------*/
+
+#restaurateur{
+	text-align: center;
+}
+#restaurateur img{
+	margin-bottom: 35px;
+}
+.restau h4{
+	text-align: center;
+	color: #339933;
+}
+
+/*===================================*/
+/*======= PAGE AIDE UTILISATEURS ====*/
+/*===================================*/
 section.aide{
 	margin-top: 25px;
 }
@@ -148,10 +187,18 @@ h4.aide{
 hr.aide{
 	margin-bottom: 60px;
 }
+.aide_retour_haut{
+	float: right;
+	color: #339933;
+	text-decoration: underline;
+	margin-top: 10px;
+}
 
 
 
-/*-----Footer----- */
+/*===========================*/
+/*=========== FOOTER ========*/
+/*===========================*/
 
 footer{
 	background-color :#339933;
