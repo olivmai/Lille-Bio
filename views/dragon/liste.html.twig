@@ -1,45 +1,37 @@
-<!doctype html>
-<html>
-	<head>
-		<title></title>
-		<meta charset="utf-8">
-		<link href="{{ asset('/lib/knakcss.min.css') }}" rel="stylesheet">
+{% extends 'layout.html.twig' %}
+{% block content %}
+<h1>Page de liste des dragons</h1>
 
-	</head>
-	<body>
-		<h1>Page de liste des dragons</h1>
+<a href="{{ path('home') }}">Retour à la page d'accueil</a>
 
-		<a href="{{ path('home') }}">Retour à la page d'accueil</a>
-
-		<table>
-			<thead>
-				<tr>
-					<th>Dragon</th>
-					<th>Sexe</th>
-					<th>Longueur</th>
-					<th>Ecailles</th>
-					<th>Crache du feu</th>
-					<th>En amour</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for dragon in dragons %}
-				<tr>
-					<td>{{ dragon.dragon }}</td>
-					<td>{{ dragon.sexe }}</td>
-					<td>{{ dragon.longueur }}</td>
-					<td>{{ dragon.ecailles }}</td>
-					<td>
-						{% if dragon.cracheFeu == "N" %}
-						Non
-						{% else %}
-						Oui
-						{% endif %}
-					</td>
-					<td>{{ dragon.enAmour }}</td>
-				</tr>
-			{% endfor %}
-			</tbody>
-		</table>
-	</body>
-</html>
+<table>
+	<thead>
+		<tr>
+			<th>Dragon</th>
+			<th>Sexe</th>
+			<th>Longueur</th>
+			<th>Ecailles</th>
+			<th>Crache du feu</th>
+			<th>En amour</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for dragon in dragons %}
+		<tr>
+			<td>{{ dragon.dragon }}</td>
+			<td>{{ dragon.sexe }}</td>
+			<td>{{ dragon.longueur }}</td>
+			<td>{{ dragon.ecailles }}</td>
+			<td>
+				{% if dragon.cracheFeu == "N" %}
+				Non
+				{% else %}
+				Oui
+				{% endif %}
+			</td>
+			<td>{{ dragon.enAmour }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -12,3 +12,6 @@ $app->get('/dragon-liste', function () use ($app) {
     // Envoi des résultats au template Twig
     return $app['twig']->render('dragon/liste.html.twig', array('dragons' => $dragons));
 })->bind('dragon_liste');
+
+
+
