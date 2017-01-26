@@ -13,5 +13,10 @@ $app->get('/dragon-liste', function () use ($app) {
     return $app['twig']->render('dragon/liste.html.twig', array('dragons' => $dragons));
 })->bind('dragon_liste');
 
+// Aide utilisateurs
+$app->get('/aide-utilisateurs', function () use ($app) {
+	return $app['twig']->render('aide-utilisateur.html.twig');
+})->bind('aide_utilisateurs');
+
 
 

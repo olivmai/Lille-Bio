@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<link href="{{ asset('/lib/knakcss.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
+	</head>
+	<body>
+
+		{{ include("default/header.html.twig") }}
+
+		<div id="container" class="grid">
+
+			<aside id="aside" class="two-fifth">
+				{% block aside %}{% endblock %}
+			</aside>
+
+			<div id="main_content">
+				{% block content %}{% endblock %}
+			</div>
+
+		</div>
+
+		{{ include("default/header.html.twig") }}
+
+	</body>
+</html>

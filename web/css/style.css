@@ -1,11 +1,19 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*----- Layout -----*/
+#container{
+	max-width: 991px;
+	margin: auto;
+}
 /*-----Parties accueil-----*/
 
 @font-face {
   font-family: 'SegoePrint';
-  src: url('font/SegoePrint.eot?#iefix') format('embedded-opentype'),url('font/SegoePrint.woff') format('woff'), url('font/SegoePrint.ttf')  format('truetype'), url('font/SegoePrint.svg#SegoePrint') format('svg');
+  src: 	url('/LilleBio/web/font/SegoePrint.eot?#iefix') format('embedded-opentype'),
+  		url('/LilleBio/web/font/SegoePrint.woff') format('woff'),
+  		url('/LilleBio/web/font/SegoePrint.ttf')  format('truetype'),
+  		url('/LilleBio/web/font/SegoePrint.svg#SegoePrint') format('svg');
   font-weight: normal;
   font-style: normal;
 
@@ -45,6 +53,11 @@
 	color :  black;
 }
 
+#comment img{
+	max-width: 100px;
+	max-height: 100px;
+}
+
 
 /*-----Les liens-----*/
 
@@ -54,7 +67,7 @@ a {
 	}
 
 
- header a, footer a {
+header a, footer a {
 		text-decoration:none;
 		color : white;
 	}
@@ -69,7 +82,6 @@ a:hover{
 
 body{
 	font-family: Arial, Helvetica, sans-serif;
-	
 }
 
 
@@ -94,8 +106,13 @@ nav{
 
 #recherche {
 	height: 478 px;
-	background-image: url("images/banniere_moteur.jpg");
+	background-image: url("/LilleBio/web/img/banniere_moteur.jpg");
 	background-repeat: no-repeat;
+	text-align: center;
+}
+
+#logo_lille_bio{
+	margin-top: 35px;
 }
 
 #slogan{
@@ -104,15 +121,39 @@ nav{
 	font-size: 3em;
 	color : white;
 	letter-spacing: -4px;
+	padding-bottom: 80px;
 }
 
+/*----- Page aide utilisateurs -----*/
+section.aide{
+	margin-top: 25px;
+}
+a.aide{
+	text-align: center;
+	margin-bottom: 50px;
+}
+h1.titre.aide{
+	margin-top: 35px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 3.2em;
+}
+h2.aide{
+	color: #339933;
+}
+h4.aide{
+	font-weight: normal;
+	font-size: 1em;
+}
+hr.aide{
+	margin-bottom: 60px;
+}
 
 
 
 /*-----Footer----- */
 
 footer{
-	
 	background-color :#339933;
 	width:991px;
 	height : 74px;
