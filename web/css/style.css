@@ -43,12 +43,34 @@ header{
 	width:991px;
 	height : 74px;
 }
+header h1{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-left: 35px;
+	padding-top: 10px;
+	color: #fff;
+}
+header h1 span.segoe{
+	font-family: 'SegoePrint';
+}
 
 /*------ NAV -------*/
 
 nav{
 	font-family:  Arial, Helvetica, sans-serif;
 	color : white;
+	text-align: right;
+	padding-right: 35px;
+	padding-top: 20px;
+}
+nav a{
+	margin-right: 15px;
+	padding: 15px 10px;
+	transition: background-color 0.4s;
+}
+nav a:hover{
+	background-color: #fff;
+	color: #339933;
+	transition: background-color 0.4s;
 }
 
 /*-----Les liens-----*/
@@ -118,6 +140,7 @@ header a, footer a {
 	font-family: "SegoePrint";
 	font-weight: bold;
 	font-size: 3em;
+	text-shadow: 1px 1px #252628;
 	color : white;
 	letter-spacing: -4px;
 	padding-bottom: 80px;
