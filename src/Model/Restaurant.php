@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 namespace LilleBio\Model;
 
 use LilleBio\Model\Model;
@@ -21,6 +24,22 @@ class Restaurant extends Model
 		$troisDerniers = $this->getDb()->fetchAll($sql_derniers_restau);
 
 		return $troisDerniers;
+	}
+
+	public function exemple($request)
+	{
+		$champ1 = $request->request->get('champ_01');
+		$champ2 = $request->request->get('champ_02');
+		$champ3 = $request->request->get('champ_03');
+		$champ4 = $request->request->get('champ_04');
+
+		$exemple = array(
+			'champ1' => $champ1,
+			'champ2' => $champ2,
+			'champ3' => $champ3,
+			'champ4' => $champ4);
+
+		return $exemple;
 	}
 }
 

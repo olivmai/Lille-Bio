@@ -24,6 +24,14 @@
      <section id="categorie">
         <h1 class="titre accueil">Catégories</h1>
         <hr>
+        <p>Formulaire d'exemple pour traitement des formulaires, vous pouvez voir comment il est traité en le remplissant et validant. Plus de détails dans les fichiers : app/routes.php et src/Model/Restaurant.php (fonction exemple()).</p>
+        <form action="{{ path('exemple') }}" method="post">
+            <input type="text" name="champ_01">
+            <input type="text" name="champ_02">
+            <input type="text" name="champ_03">
+            <input type="text" name="champ_04">
+            <input type="submit">
+        </form>
     </section>
 
     <section id="comment">

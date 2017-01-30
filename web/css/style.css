@@ -27,12 +27,17 @@ a{
 a:hover{
 	color : black;
 }
-a.btn{
+a.btn, input.btn{
 	text-decoration: none;
 	padding: 10px 15px;
 	border: 1px solid #339933;
 	background-color: #339933;
 	color: #fff;
+}a.btn:hover, input.btn:hover{
+	cursor: pointer;
+}
+.form_table, .form_table tr, .form_table td, .form_table th{
+	border: none;
 }
 
 /*===========================*/
@@ -77,6 +82,8 @@ nav a:hover{
 
 header a, footer a {
 	text-decoration:none;
+	color : white;
+}header a:hover{
 	color : white;
 }
 /*===========================*/
@@ -217,6 +224,18 @@ hr.aide{
 	margin-top: 10px;
 }
 
+/*=====================================*/
+/*=========== MES RESERVATIONS ========*/
+/*=====================================*/
+.titre.resa{
+	margin-top: 50px;
+}
+.mesResa{
+	margin-top: 50px;
+	margin-bottom: 100px;
+}.mesResa .btn{
+	margin-top: 35px;
+}
 
 
 /*===========================*/
