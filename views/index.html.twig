@@ -4,39 +4,81 @@
     <section id="recherche">
         
            <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
-              {{include ("formulaire/Recherche.html.twig")}}
+
+              {{ include ("formulaire/Recherche.html.twig") }}
 
            <p id="slogan">Le slogan commercial</p>
+
+           <p id="slogan">Les plus bio restaus, à portée de clic !</p>
 
     </section>
 
     <section id="dernier">
-        <h1 class="titre">Les derniers</h>
+        <h1 class="titre accueil">Les p'tits nouveaux !</h1>
         <hr>
+        <div class="grid-3 has-gutter">
+            {% for restau in listeRestau %}
+            <div class="restau">
+                <h4><a href="#">{{ restau.nom_restau }}</a></h4>
+                <img src="{{ "/LilleBio/web" ~ restau.url_img }}" alt="{{ restau.nom_image }}">
+                <p class="lastRestau">{{ restau.nomCat }} {% if restau.etoiles > 0 %} | {{ restau.etoiles }} étoile(s){% endif %} | {{ restau.ville }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="#" class="btn">Voir tous les restaurants > </a>
     </section>
 
      <section id="categorie">
+
         <h1 class="titre">Catégories</h1>
         {{include("categorie/categorie.html.twig")}}
         
+        <h1 class="titre accueil">Catégories</h1>
+        
         <hr>
+        <p>Formulaire d'exemple pour traitement des formulaires, vous pouvez voir comment il est traité en le remplissant et validant. Plus de détails dans les fichiers : app/routes.php et src/Model/Restaurant.php (fonction exemple()).</p>
+        <form action="{{ path('exemple') }}" method="post">
+            <input type="text" name="champ_01">
+            <input type="text" name="champ_02">
+            <input type="text" name="champ_03">
+            <input type="text" name="champ_04">
+            <input type="submit">
+        </form>
     </section>
 
     <section id="comment">
-        <h1 class="titre">Comment ça marche ?</h1>
+        <h1 class="titre accueil">Comment ça marche ?</h1>
         <hr>
-        <div class="grid-3 has-gutter">
-            <img src="{{ asset('/img/Recherche.png') }}" alt="Aide recherche un restaurant"/>
-            <img src="{{ asset('/img/Date.png') }}" alt="Aide calendrier"/>
-            <img src="{{ asset('/img/couverts.png') }}" alt="Aide nombre de couverts"/>
-            <img src="{{ asset('/img/Envoyer.png') }}" alt="Aide envoyer la réservation"/>
-            <img src="{{ asset('/img/Modifier.png') }}" alt="Aide envoyer la réservation"/>
-            <img src="{{ asset('/img/Payer.png') }}" alt="Aide payer plus tard"/>
+        <div class="grid-3 has-gutter aide">
+            <a href="#recherche" class="aide">
+                <img src="{{ asset('/img/Recherche.png') }}" alt="Rechercher un restaurant"><br>
+                <h4 class="aide">Recherchez      votre restaurant</h4>
+            </a>
+            <a href="#date" class="aide">
+                <img src="{{ asset('/img/Date.png') }}" alt="Choisissez une date"><br>
+                <h4 class="aide">Choisissez une date</h4>
+            </a>
+            <a href="#nombre" class="aide">
+                <img src="{{ asset('/img/couverts.png') }}" alt="Précisez le nombre de personne"><br>
+                <h4 class="aide">Précisez le nombre de personne</h4>
+            </a>
+            <a href="#envoyer" class="aide">
+                <img src="{{ asset('/img/Envoyer.png') }}" alt="Envoyer votre réservation"><br>
+                <h4 class="aide">Envoyez votre réservation</h4>
+            </a>
+            <a href="#modifier" class="aide">
+                <img src="{{ asset('/img/Modifier.png') }}" alt="Modifier votre réservation"><br>
+                <h4 class="aide">Modifiez votre réservation</h4>
+            </a>
+            <a href="#payer" class="aide">
+                <img src="{{ asset('/img/Payer.png') }}" alt="Payer sur place"><br>
+                <h4 class="aide">Payez sur place</h4>
+            </a>
         </div>
     </section>
 
      <section id="restaurateur">
-        <h1 class="titre">Vous êtes restaurateur ?</h1>
+        <h1 class="titre accueil">Vous êtes restaurateur ?</h1>
         <hr>
         <a href=""><img src="{{ asset('/img/Banniere_restaurateur.jpg') }}" alt="Vous êtes restaurateur"/></a>
 
