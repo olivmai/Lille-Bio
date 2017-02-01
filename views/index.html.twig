@@ -2,8 +2,12 @@
 
     {% block content %}
     <section id="recherche">
+        
            <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
+              {{include ("formulaire/Recherche.html.twig")}}
+
            <p id="slogan">Le slogan commercial</p>
+
     </section>
 
     <section id="dernier">
@@ -13,6 +17,8 @@
 
      <section id="categorie">
         <h1 class="titre">Catégories</h1>
+        {{include("categorie/categorie.html.twig")}}
+        
         <hr>
     </section>
 

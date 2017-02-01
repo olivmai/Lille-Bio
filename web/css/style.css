@@ -149,6 +149,13 @@ hr.aide{
 	margin-bottom: 60px;
 }
 
+/*------ formulaire------*/
+
+input {
+  font-family : "Trebuchet MS";
+  font-size   : 100%;
+  background-color:  white;
+}
 
 
 /*-----Footer----- */
