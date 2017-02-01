@@ -227,6 +227,14 @@ hr.aide{
 	margin-top: 10px;
 }
 
+<<<<<<< HEAD
+/*------ formulaire------*/
+
+input {
+  font-family : "Trebuchet MS";
+  font-size   : 100%;
+  background-color:  white;
+=======
 /*=====================================*/
 /*=========== MES RESERVATIONS ========*/
 /*=====================================*/
@@ -238,6 +246,7 @@ hr.aide{
 	margin-bottom: 100px;
 }.mesResa .btn{
 	margin-top: 35px;
+>>>>>>> 66bc655135f1b3265cc61257c73b89562334855e
 }
 
 /*=====================================*/

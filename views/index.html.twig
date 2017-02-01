@@ -2,8 +2,15 @@
 
     {% block content %}
     <section id="recherche">
+        
            <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
+
+              {{ include ("formulaire/Recherche.html.twig") }}
+
+           <p id="slogan">Le slogan commercial</p>
+
            <p id="slogan">Les plus bio restaus, à portée de clic !</p>
+
     </section>
 
     <section id="dernier">
@@ -22,7 +29,12 @@
     </section>
 
      <section id="categorie">
+
+        <h1 class="titre">Catégories</h1>
+        {{include("categorie/categorie.html.twig")}}
+        
         <h1 class="titre accueil">Catégories</h1>
+        
         <hr>
         <p>Formulaire d'exemple pour traitement des formulaires, vous pouvez voir comment il est traité en le remplissant et validant. Plus de détails dans les fichiers : app/routes.php et src/Model/Restaurant.php (fonction exemple()).</p>
         <form action="{{ path('exemple') }}" method="post">
