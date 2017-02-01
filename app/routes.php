@@ -17,8 +17,9 @@ $app->get('/aide-utilisateurs', function () use ($app) {
 })->bind('aide_utilisateurs');
 
 // Restaurant
-$app->get('/restaurant', function () use ($app) {
-	return $app['twig']->render('restaurant.html.twig');
+$app->get('/restaurant/{id}', function ($id) use ($app) {
+	$pageRestau = $app['model.restaurant']->getRestau($id);
+	return $app['twig']->render('restaurant.html.twig', array('dataRest' => $pageRestau));
 })->bind('restaurant');
 
 // Restaurant
@@ -31,6 +32,11 @@ $app->post('/exemple', function (Request $request) use ($app) {
 $app->get('/mes-reservations', function () use ($app) {
 	return $app['twig']->render('mes-reservations.html.twig');
 })->bind('mes_reservations');
+
+// Mes reservations
+$app->get('/espace-restaurateur', function () use ($app) {
+	return $app['twig']->render('espace-restaurateur.html.twig');
+})->bind('espace_restau');
 
 
 

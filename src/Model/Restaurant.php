@@ -41,5 +41,58 @@ class Restaurant extends Model
 
 		return $exemple;
 	}
+
+	public function getRestau($id)
+	{
+		$sql_restau = "SELECT i.nomImg nom_image, i.urlImg url_img, r.numRest num_restau, r.nomRest nom_restau, r.catRest cat_restau, r.etoileRest etoiles, r.villeRest ville, r.formRepasRest formule, r.rueRest rue, r.cpRest cp, c.nomCat
+			FROM Restaurant r
+			LEFT JOIN Image i
+			ON i.numImg = r.numImg
+			LEFT JOIN Categorie c
+			ON c.numCat = r.catRest
+			WHERE r.numRest = ".$id;
+
+		$restaurant = $this->getDb()->fetchAssoc($sql_restau);
+
+		//pour menu : where id restau = restau && numMenu not null && categorie = entrée, plat, dessert...
+
+		$sql_entree = "SELECT * FROM Plat WHERE catPlat = 'entree' AND numRest = ".$id." AND numMenu IS NULL";
+		$listeEntrees = $this->getDb()->fetchAll($sql_entree);
+
+		$sql_plat = "SELECT * FROM Plat WHERE catPlat = 'plat' AND numRest = ".$id." AND numMenu IS NULL";
+		$listePlats = $this->getDb()->fetchAll($sql_plat);
+
+		$sql_dessert = "SELECT * FROM Plat WHERE catPlat = 'dessert' AND numRest = ".$id." AND numMenu IS NULL";
+		$listeDesserts = $this->getDb()->fetchAll($sql_dessert);
+
+		$sql_menu_entree = "SELECT * FROM Plat WHERE catPlat = 'entree' AND numRest = ".$id." AND numMenu IS NOT NULL";
+		$listeMenuEntrees = $this->getDb()->fetchAll($sql_menu_entree);
+
+		$sql_menu_plat = "SELECT * FROM Plat WHERE catPlat = 'plat' AND numRest = ".$id." AND numMenu IS NOT NULL";
+		$listeMenuPlats = $this->getDb()->fetchAll($sql_menu_plat);
+
+		$sql_menu_dessert = "SELECT * FROM Plat WHERE catPlat = 'dessert' AND numRest = ".$id." AND numMenu IS NOT NULL";
+		$listeMenuDesserts = $this->getDb()->fetchAll($sql_menu_dessert);
+
+		$menu = array(
+			'listeEntrees' => $listeMenuEntrees,
+			'listePlats' => $listeMenuPlats,
+			'listeDesserts' => $listeMenuDesserts
+			);
+
+		$carte = array(
+			'listeEntrees' => $listeEntrees,
+			'listePlats' => $listePlats,
+			'listeDesserts' => $listeDesserts
+			);
+
+		$pageRestau = array(
+			'menu' => $menu,
+			'carte' => $carte,
+			'restaurant' => $restaurant,
+			);
+
+		return $pageRestau;
+	}
 }
 

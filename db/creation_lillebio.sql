@@ -26,7 +26,7 @@ create table Client
 		rueClient varchar(200) null,
 		villeClient varchar(50) null,
 		cpClient int(5) null,
-		telClient int(10) not null,
+		telClient char(10) not null,
 		emailClient varchar(50) not null,
 		constraint pk_client primary key(numClient)
 	);

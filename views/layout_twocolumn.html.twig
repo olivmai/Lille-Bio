@@ -9,21 +9,23 @@
 	</head>
 	<body>
 
-		{{ include("default/header.html.twig") }}
+		<div id="container">
 
-		<div id="container" class="grid">
+			{{ include("default/header.html.twig") }}
 
-			<aside id="aside" class="two-fifth">
-				{% block aside %}{% endblock %}
-			</aside>
+			<div class="grid">
+				<aside id="aside" class="one-quarter">
+					{% block aside %}{% endblock %}
+				</aside>
 
-			<div id="main_content">
-				{% block content %}{% endblock %}
+				<div id="main_content">
+					{% block content %}{% endblock %}
+				</div>
 			</div>
 
-		</div>
+			{{ include("default/footer.html.twig") }}
 
-		{{ include("default/footer.html.twig") }}
+		</div>
 
 	</body>
 </html>
