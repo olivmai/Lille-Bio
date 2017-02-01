@@ -3,49 +3,86 @@
 
 <!--Formulaire-->
 
-<form name="coordonnees" method="post" action="un_script.php">  
-    <label for="date">Date</label><br/>
-        <input id="date" type="date" name="date" size="50"><br>
-    <label for="heure">Heure</label><br/>
-        <input id="heure" type="time" name="heure" size="50"><br>
-    <label for="nom">Nom</label><br/>
-        <input id="nom" type="text" name="nom" size="50"><br>
-    <label for="prenom">Prénom</label><br/>
-        <input id="prenom" type="text" name="prenom" size="50"><br> 
-    <label for="email">Email</label><br/>
-        <input id="email" type="email" name="email" size="50"><br>
-    <label for="telephone">Téléphone</label><br/>
-        <input id="telephone" type="text" name="telephone" size="50"><br/>
-    <label for="adresse">Adresse</label><br/>
-        <input id="adresse" type="text" name="adresse" size="50"><br>
-    <label for="ville">Ville</label><br/>
-        <input id="ville" type="text" name="ville" size="50"><br>
-    <label for="cp">Code postal</label><br/>
-        <input id="cp" type="text" name="cp" size="50"><br>   
-               
-    <input  class="boutton1" type="submit" value="Réservez">
-</form><br/>
+<aside class="reservation">
+
+    <h1>Reservez maintenant !</h1>
+
+    <form name="coordonnees" method="post" action="un_script.php">  
+        <label for="date">Date</label><br/>
+            <input id="date" type="date" name="date" size="50"><br>
+        <label for="heure">Heure</label><br/>
+            <input id="heure" type="time" name="heure" size="50"><br>
+        <label for="nom">Nom</label><br/>
+            <input id="nom" type="text" name="nom" size="50"><br>
+        <label for="prenom">Prénom</label><br/>
+            <input id="prenom" type="text" name="prenom" size="50"><br> 
+        <label for="email">Email</label><br/>
+            <input id="email" type="email" name="email" size="50"><br>
+        <label for="telephone">Téléphone</label><br/>
+            <input id="telephone" type="text" name="telephone" size="50"><br/>
+        <label for="adresse">Adresse</label><br/>
+            <input id="adresse" type="text" name="adresse" size="50"><br>
+        <label for="ville">Ville</label><br/>
+            <input id="ville" type="text" name="ville" size="50"><br>
+        <label for="cp">Code postal</label><br/>
+            <input id="cp" type="text" name="cp" size="50"><br>   
+        <input  class="btn" type="submit" value="Réservez">
+    </form>
+
+</aside>
+
 {% endblock %}
+
 {% block content %}
+
 <!--Page du restaurant-->
 
-<img src="images/restaurant_01.jpg" alt="restaurant numero 1" title="restaurant numero 1"/><br/>
-<p>Itaque verae amicitiae difficillime reperiuntur in iis qui in honoribus reque publica versantur; <br/>
-ubi enim istum invenias qui honorem amici anteponat suo? Quid? Haec ut omittam, quam<br/>
-graves, quam difficiles plerisque videntur calamitatum societates! Ad quas non est facile<br/>
-inventu qui descendant. Quamquam Ennius recte.</p>
+<section class="restau_container">
 
-<h1 class="titre">Menu</h1>
-<h1 class="titre">Prix</h1>
-<h1 class="titre">Carte</h1>
-<h2 class="soustitre">Entrée</h2>
-<h2 class="soustitre">Plat</h2>
-<p>Dessert</p>
-<h1 class="titre">Informations</h1>
-<p>Itaque verae amicitiae difficillime reperiuntur in iis qui in honoribus reque publica versantur; <br/>
-ubi enim istum invenias qui honorem amici anteponat suo? Quid? Haec ut omittam, quam<br/>
-graves, quam difficiles plerisque videntur calamitatum societates! Ad quas non est facile<br/>
-inventu qui descendant. Quamquam Ennius recte.</p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060023236!2d2.977120494791568!3d50.63104650746587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2sLille!5e0!3m2!1sfr!2sfr!4v1485445413881" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <h1>{{ restaurant.nom_restau }}</h1>
+
+    <img src="{{ "/LilleBio/web" ~ restaurant.url_img }}" alt="restaurant numero 1" title="{{ restaurant.nom_image }}"/><br/>
+
+    <h3>Catégorie : <span class="green">{{ restaurant.nomCat }}</span> {% if restaurant.etoiles > 0 %} | <span class="green">{{ restaurant.etoiles }}</span> étoile(s){% endif %} | Ville : <span class="green">    {{ restaurant.ville }}</span></h3>
+
+    {% if restaurant.formule == "complet" %}
+
+    <section class="fomuleComplet grid">
+        <div class="menu">
+            <h1 class="titre">Menu</h1>
+        </div>
+        <div class="carte">
+            <h1 class="titre">Carte</h1>
+        </div>
+    </section>
+
+    {% elseif restaurant.formule == "carte" %}
+
+    <section class="fomuleCarte">
+        <div class="carte">
+            <h1 class="titre">Carte</h1>
+        </div>
+    </section>
+
+    {% elseif restaurant.formule == "menu" %}
+
+    <section class="fomuleCarte">
+        <div class="menu">
+            <h1 class="titre">Menu</h1>
+        </div>
+    </section>
+
+    {% endif %}
+
+
+    <h1 class="titre">Informations</h1>
+    <p>Itaque verae amicitiae difficillime reperiuntur in iis qui in honoribus reque publica versantur; <br/>
+    ubi enim istum invenias qui honorem amici anteponat suo? Quid? Haec ut omittam, quam<br/>
+    graves, quam difficiles plerisque videntur calamitatum societates! Ad quas non est facile<br/>
+    inventu qui descendant. Quamquam Ennius recte.</p>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060023236!2d2.977120494791568!3d50.63104650746587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2s{{ restaurant.ville }}!5e0!3m2!1sfr!2sfr!4v1485445413881" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+</section>
 
 {% endblock %}
