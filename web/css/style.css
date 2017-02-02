@@ -299,9 +299,9 @@ section>header{
 /*=========== FOOTER ========*/
 /*===========================*/
 
-footer{
-	background-color :#339933;
-	width:991px;
+footer#footer{
+	background-color: #339933 !important;
+	width: 991px;
 	height : 74px;
 }
 
