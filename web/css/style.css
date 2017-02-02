@@ -27,29 +27,37 @@ a{
 a:hover{
 	color : black;
 }
-a.btn{
+a.btn, input.btn{
 	text-decoration: none;
 	padding: 10px 15px;
 	border: 1px solid #339933;
 	background-color: #339933;
 	color: #fff;
+}a.btn:hover, input.btn:hover{
+	cursor: pointer;
+}
+.form_table, .form_table tr, .form_table td, .form_table th{
+	border: none;
+}
+span.green{
+	color: #339933;
 }
 
 /*===========================*/
 /*========== HEADER =========*/
 /*===========================*/
-header{
+header#header{
 	background-color :#339933;
 	width:991px;
 	height : 74px;
 }
-header h1{
+header#header h1{
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	padding-left: 35px;
 	padding-top: 10px;
 	color: #fff;
 }
-header h1 span.segoe{
+header#header h1 span.segoe{
 	font-family: 'SegoePrint';
 }
 
@@ -77,6 +85,8 @@ nav a:hover{
 
 header a, footer a {
 	text-decoration:none;
+	color : white;
+}header a:hover{
 	color : white;
 }
 /*===========================*/
@@ -217,15 +227,81 @@ hr.aide{
 	margin-top: 10px;
 }
 
+<<<<<<< HEAD
+/*------ formulaire------*/
+
+input {
+  font-family : "Trebuchet MS";
+  font-size   : 100%;
+  background-color:  white;
+=======
+/*=====================================*/
+/*=========== MES RESERVATIONS ========*/
+/*=====================================*/
+.titre.resa{
+	margin-top: 50px;
+}
+.mesResa{
+	margin-top: 50px;
+	margin-bottom: 100px;
+}.mesResa .btn{
+	margin-top: 35px;
+>>>>>>> 66bc655135f1b3265cc61257c73b89562334855e
+}
+
+/*=====================================*/
+/*=========== PAGE RESTAURANT =========*/
+/*=====================================*/
+section.restau_container{
+	padding: 15px;
+}section.restau_container h1{
+	color: #339933;
+	text-align: center;
+}section.restau_container h3{
+	font-size: initial;
+	text-align: justify;
+	letter-spacing: 2px;
+	text-align: center;
+}section.restau_container table,section.restau_container table tr, section.restau_container table, td{
+	border: none;
+}section.restau_container table tr{
+	border-bottom: solid 1px #BBC5B8;
+}section.restau_container table .prix{
+	text-align: right;
+}
+aside.reservation{
+	margin-top: 25px;
+	border: 1px solid #339933;
+	padding: 2px;
+}aside.reservation h1{
+	margin: -2px;
+	font-size: 1.2em;
+	text-align: center;
+	background-color: #339933;
+	color: #fff;
+}aside.reservation form{
+	margin-top: 20px;
+}aside.reservation form>input.btn{
+	display: block;
+	margin: 20px 0px 0px 0px;
+	width: 100%;
+}
+
+/*========================================*/
+/*=========== ESPACE RESTAURATEUR ========*/
+/*========================================*/
+section>header{
+	color: #339933;
+}
 
 
 /*===========================*/
 /*=========== FOOTER ========*/
 /*===========================*/
 
-footer{
-	background-color :#339933;
-	width:991px;
+footer#footer{
+	background-color: #339933 !important;
+	width: 991px;
 	height : 74px;
 }
 

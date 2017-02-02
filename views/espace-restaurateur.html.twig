@@ -1,0 +1,424 @@
+{% extends 'layout_twocolumn.html.twig' %}
+
+{% block aside %}
+
+<nav id="menu">
+	<a href="#coordonnees">Vos Coordonnées</a><br>
+	<a href="#infos">Informations</a><br>
+	<a href="#menus">Menus & plats</a><br>
+	<a href="#reservations">Réservations</a><br>
+	<a href="#newsletter">Newsletter</a><br>
+	<a href="#aide">Aide</a>
+</nav>
+
+{% endblock %}
+
+{% block content %}
+
+<section id="coordonnees">
+	<header><h1>Vos Coordonnées</h1></header>
+	<table>
+		<tr>
+			<td><label for = "Adresse"><b>Adresse</b></label></td>
+			<td> </td>
+			<td><input id="Adresse" type="Text" name="Adresse" size="50" placeholder="N° Rue, Avenue,Boulevard"></td>
+		</tr>
+		<tr>
+			<td><label for="CodePostal"><b>Code Postal</b></label></td>
+			<td> </td>
+			<td> <input id="CodePostal" type = "Text" name="CodePostal" size="50"></td>
+		</tr>
+		<tr>
+			<td><label for="Ville"><b>Ville</b></label></td>
+			<td> </td>
+			<td> <input id="Ville" type = "Text" name = "Ville" size = "50"></td>
+		</tr>
+		<tr>
+			<td><label for="Téléphone"><b>Téléphone</b></label></td>
+			<td> </td>
+			<td> <input id ="Téléphone" type= "Text" name ="Téléphone" size = "50" placeholder="+33(0) "></td>
+		</tr>
+		<tr>
+			<td><label for ="Email"><b>Email</b></label></td>
+			<td> </td>
+			<td> <input id ="Email" type="Text" name="Email" size = "50" placeholder="example@boitemail.com"></td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td><input type="submit" value="Enregistrer" name="EnvoyerCoordonnées"> </td>
+		</tr>
+	</table>
+</section>
+<section id="infos">
+	<header><h1>Informations sur le restaurant</h1></header>
+	<table>
+		<tr>
+			<td><label for = "Nombre de tables"><b>Nombre de tables</b></label></td>
+			<td> </td>
+			<td><input id="Nombre de tables" type="Text" name="Nombre de tables" size="20"></td>
+		</tr>
+		<tr>
+			<td><label for="Nombre de couverts"><b>Nombre de couverts</b></label></td>
+			<td> </td>
+			<td> <input id="Nombre de couverts" type = "Text" name="Nombre de couverts" size="20"></td>
+		</tr>
+		<tr>
+			<td><label for="Catégorie"><b>Catégorie</b></label></td>
+			<td> </td>
+			<td> <input id="Catégorie" type = "Text" name = "Catégorie" size = "20"></td>
+		</tr>
+		<tr>
+			<td><label for="Nombre d'étoiles"><b>Nombre d'étoiles</b></label></td>
+			<td> </td>
+			<td> <input id ="Nombre d'étoiles" type= "Text" name ="Nombre d'étoiles" size = "20"></td>
+		</tr>
+		<tr>
+			<td><label for ="Formule"><b>Formule</b></label></td>
+			<td> </td>
+			<td> <input id ="Formule" type="Text" name="Formule" size = "20"></td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td><input type="submit" value="EnregistrerInformations"> </td>
+		</tr>
+	</table>
+</section>
+<section>
+	<header><h1>Menus et cartes</h1></header>
+	<table>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td colspan ="5"><h1>Plats</h1></td>
+				</tr>
+				<tr>
+					<td><h3>Entrées</h3></td>
+					<td> </td>
+					<td><h3>Prix</h3></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Entrée1" type="Text" name="Entrée1" size="30"></td>
+					<td> </td>
+					<td><input id="PrixEntrée1" type="Text" name="PrixEntrée1" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Entrée2" type="Text" name="Entrée2" size="30"></td>
+					<td> </td>
+					<td><input id="PrixEntrée2" type="Text" name="PrixEntrée2" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Entrée 3" type="Text" name="Entrée3" size="30"></td>
+					<td> </td>
+					<td><input id="PrixEntrée3" type="Text" name="PrixEntrée3" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Entrée4" type="Text" name="Entrée4" size="30"></td>
+					<td> </td>
+					<td><input id="PrixEntrée4" type="Text" name="PrixEntrée4" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Entrée5" type="Text" name="Entrée5" size="30"></td>
+					<td> </td>
+					<td><input id="PrixEntrée5" type="Text" name="PrixEntrée5" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td colspan="5"> </td>
+				</tr>
+				<tr>
+					<td><h3>Plats</h3></td>
+					<td> </td>
+					<td><h3>Prix</h3></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Plat1" type="Text" name="Plat1" size="30"></td>
+					<td> </td>
+					<td><input id="PrixPlat1" type="Text" name="PrixPlat1" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Plat2" type="Text" name="Plat2" size="30"></td>
+					<td> </td>
+					<td><input id="PrixPlat2" type="Text" name="PrixPlat2" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Plat3" type="Text" name="Plat3" size="30"></td>
+					<td> </td>
+					<td><input id="PrixPlat3" type="Text" name="PrixPlat3" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Plat4" type="Text" name="Plat4" size="30"></td>
+					<td> </td>
+					<td><input id="PrixPlat4" type="Text" name="PrixPlat4" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Plat5" type="Text" name="Plat5" size="30"></td>
+					<td> </td>
+					<td><input id="PrixPlat5" type="Text" name="PrixPlat5" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+
+				<tr>
+					<td><h3>Desserts</h3></td>
+					<td> </td>
+					<td><h3>Prix</h3></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Dessert1" type="Text" name="Dessert1" size="30"></td>
+					<td> </td>
+					<td><input id="PrixDessert1" type="Text" name="PrixDessert1" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Dessert2" type="Text" name="Dessert2" size="30"></td>
+					<td> </td>
+					<td><input id="PrixDessert2" type="Text" name="PrixDessert2" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Dessert3" type="Text" name="Dessert3" size="30"></td>
+					<td> </td>
+					<td><input id="PrixDessert3" type="Text" name="PrixDessert3" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Dessert4" type="Text" name="Dessert4" size="30"></td>
+					<td> </td>
+					<td><input id="PrixDessert4" type="Text" name="PrixDessert4" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td><input id="Dessert5" type="Text" name="Dessert5" size="30"></td>
+					<td> </td>
+					<td><input id="PrixDessert5" type="Text" name="PrixDessert5" size="4"></td>
+					<td colspan="2"> </td>
+				</tr>
+				<tr>
+					<td colspan="4"></td>
+					<td><input type="submit" name="EnregistrerPlats"value = "Enregistrer" ></td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr>
+					<td colspan="5"><h1>Menus</h1></td>
+				</tr>
+				<tr>
+					<td colspan="4"> </td>
+					<td><h3>Prix</h3></td>
+				</tr>
+				<tr>
+					<td><b>Nom</b></td>
+					<td> </td>
+					<td><input id="NomMenu1" type="text" name="NomMenu1" size="30"></td>
+					<td> </td>
+					<td><input id="PrixMenu1" type="text" name="PrixMenu1" size="4"></td>
+				</tr>
+				<tr>
+					<td><b>Entrée</b></td>
+					<td> </td>
+					<td><input id="EntreeMenu1" type="text" name="EntreeMenu1" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td><b>Plat</b></td>
+					<td> </td>
+					<td><input id="PlatMenu1" type="text" name="PlatMenu1" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td><b>Dessert</b></td>
+					<td> </td>
+					<td><input id="DessertMenu1" type="text" name="DessertMenu1" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td colspan="5">
+				</tr>
+					<tr>
+					<td colspan="4"> </td>
+					<td><h3>Prix</h3></td>
+				</tr>
+				<tr>
+					<td><b>Nom</b></td>
+					<td> </td>
+					<td><input id="NomMenu2" type="text" name="NomMenu2" size="30"></td>
+					<td> </td>
+					<td><input id="PrixMenu2" type="text" name="PrixMenu2" size="4"></td>
+				</tr>
+				<tr>
+					<td><b>Entrée</b></td>
+					<td> </td>
+					<td><input id="EntreeMenu2" type="text" name="EntreeMenu2" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td><b>Plat</b></td>
+					<td> </td>
+					<td><input id="PlatMenu2" type="text" name="PlatMenu2" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td><b>Dessert</b></td>
+					<td> </td>
+					<td><input id="DessertMenu2" type="text" name="DessertMenu2" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td colspan="5">
+				</tr>
+					<tr>
+					<td colspan="4"> </td>
+					<td><h3>Prix</h3></td>
+				</tr>
+				<tr>
+					<td><b>Nom</b></td>
+					<td> </td>
+					<td><input id="NomMenu3" type="text" name="NomMenu3" size="30"></td>
+					<td> </td>
+					<td><input id="PrixMenu3" type="text" name="PrixMenu3" size="4"></td>
+				</tr>
+				<tr>
+					<td><b>Entrée</b></td>
+					<td> </td>
+					<td><input id="EntreeMenu3" type="text" name="EntreeMenu3" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td><b>Plat</b></td>
+					<td> </td>
+					<td><input id="PlatMenu3" type="text" name="PlatMenu3" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td><b>Dessert</b></td>
+					<td> </td>
+					<td><input id="DessertMenu3" type="text" name="DessertMenu3" size="30"></td>
+					<td colspan="2">
+				</tr>
+				<tr>
+					<td colspan="5"> </td>
+				</tr>
+				<tr>
+					<td colspan="3"> </td>
+					<td colspan="2"><input type="submit" name="EnregistrerMenus" value="Enregistrer"></td>
+				</tr>
+			</table>
+		</td>
+		</tr>
+	</table>
+</section>
+<section id="reservations">
+
+	<header><h1>Réservations</h1></header>
+	<table>
+		<tr>
+			<td colspan="2"><h3>Heure</h3></td>
+			<td colspan="2"><h3>Nom</h3></td>
+			<td colspan="2"><h3>Couverts</h3></td>
+			<td>			<h3>Message</h3></td>
+		</tr>
+		<tr>
+			<td><input id="HeureResadujour1" type="text" name="Resadujour1" size="10"></td>
+			<td> </td>
+			<td><input id="NomResadujour1" type="text" name="NomResadujour1" size="30"> </td>
+			<td> </td>
+			<td> <input id="Couvertsresadujour1" type="text" name="CouvertsResadujour1" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResadujour1" value="Envoyer"> </td>
+		</tr>
+		<tr>
+			<td><input id="HeureResadujour2" type="text" name="Resadujour2" size="10"></td>
+			<td> </td>
+			<td><input id="NomResadujour2" type="text" name="NomResadujour2" size="30"> </td>
+			<td> </td>
+			<td> <input id="Couvertsresadujour2" type="text" name="CouvertsResadujour2" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResadujour2" value="Envoyer"> </td>
+		</tr>
+		<tr>
+			<td><input id="HeureResadujour3" type="text" name="Resadujour3" size="10"></td>
+			<td> </td>
+			<td><input id="NomResadujour3" type="text" name="NomResadujour3" size="30"> </td>
+			<td> </td>
+			<td> <input id="Couvertsresadujour3" type="text" name="CouvertsResadujour3" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResadujour3" value="Envoyer"> </td>
+		</tr>
+	</table>
+	<h3>Les prochaines</h3>
+	<table>
+		<tr>
+			<td colspan="2"><h3>Heure</h3></td>
+			<td colspan="2"><h3>Nom</h3></td>
+			<td colspan="2"><h3>Couverts</h3></td>
+			<td>			<h3>Message</h3></td>
+		</tr>
+		<tr>
+			<td><input id="HeureResaAVenir1" type="text" name="HeureResaAVenir1" size="10"></td>
+			<td> </td>
+			<td><input id="NomResaAVenir1" type="text" name="NomResaAVenir1" size="30"> </td>
+			<td> </td>
+			<td> <input id="CouvertsResaAvenir1" type="text" name="CouvertsResaAvenir1" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResaAVenir1" value="Envoyer"> </td>
+		</tr>
+		<tr>
+			<td><input id="HeureResaAVenir2" type="text" name="HeureResaAVenir2" size="10"></td>
+			<td> </td>
+			<td><input id="NomResaAVenir2" type="text" name="NomResaAVenir2" size="30"> </td>
+			<td> </td>
+			<td> <input id="CouvertsResaAvenir2" type="text" name="CouvertsResaAvenir2" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResaAVenir2" value="Envoyer"> </td>
+		</tr>
+		<tr>
+			<td><input id="HeureResaAVenir3" type="text" name="HeureResaAVenir3" size="10"></td>
+			<td> </td>
+			<td><input id="NomResaAVenir3" type="text" name="NomResaAVenir3" size="30"> </td>
+			<td> </td>
+			<td> <input id="CouvertsResaAvenir3" type="text" name="CouvertsResaAvenir3" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResaAVenir3" value="Envoyer"> </td>
+		</tr>
+		<tr>
+			<td><input id="HeureResaAVenir4" type="text" name="HeureResaAVenir4" size="10"></td>
+			<td> </td>
+			<td><input id="NomResaAVenir4" type="text" name="NomResaAVenir4" size="30"> </td>
+			<td> </td>
+			<td> <input id="CouvertsResaAvenir4" type="text" name="CouvertsResaAvenir4" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResaAVenir4" value="Envoyer"> </td>
+		</tr>
+		<tr>
+			<td><input id="HeureResaAVenir5" type="text" name="HeureResaAVenir5" size="10"></td>
+			<td> </td>
+			<td><input id="NomResaAVenir5" type="text" name="NomResaAVenir5" size="30"> </td>
+			<td> </td>
+			<td> <input id="CouvertsResaAvenir5" type="text" name="CouvertsResaAvenir5" size="10"> </td>
+			<td> </td>
+			<td><input type="submit" name="EnvoyerResaAVenir5" value="Envoyer"> </td>
+		</tr>
+	</table>
+</section>
+<section id="newsletter">
+	<header><h1>Newsletter</h1></header>
+	<textarea id="letexte" rows="10" cols="90">Contenu...</textarea><br>
+	<input type="submit" name="Envoyer">
+</section>
+
+{% endblock %}

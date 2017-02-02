@@ -1,19 +1,39 @@
 {% extends 'layout_twocolumn.html.twig'%}
+<<<<<<< HEAD
+=======
+
+{% block aside %}
+>>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
 
 
+<<<<<<< HEAD
 
 {% block aside %}
     <form name="coordonnees" method="post" action="{{ path ('reservation')}}">  
+=======
+<aside class="reservation">
+
+    <h1>Reservez maintenant !</h1>
+
+    <form name="coordonnees" method="post" action="un_script.php">
+>>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
         <label for="date">Date</label><br/>
             <input id="date" type="date" name="date" size="50"><br>
         <label for="heure">Heure</label><br/>
             <input id="heure" type="time" name="heure" size="50"><br>
+<<<<<<< HEAD
         <label for="couverts">Nombre de personne(s)</label><br/>
             <input id="couverts" type="text" name="couverts" size="50"><br>
         <label for="nom">Nom</label><br/>
             <input id="nom" type="text" name="nom" size="50"><br>
         <label for="prenom">Prénom</label><br/>
             <input id="prenom" type="text" name="prenom" size="50"><br> 
+=======
+        <label for="nom">Nom</label><br/>
+            <input id="nom" type="text" name="nom" size="50"><br>
+        <label for="prenom">Prénom</label><br/>
+            <input id="prenom" type="text" name="prenom" size="50"><br>
+>>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
         <label for="email">Email</label><br/>
             <input id="email" type="email" name="email" size="50"><br>
         <label for="telephone">Téléphone</label><br/>
@@ -23,6 +43,7 @@
         <label for="ville">Ville</label><br/>
             <input id="ville" type="text" name="ville" size="50"><br>
         <label for="cp">Code postal</label><br/>
+<<<<<<< HEAD
             <input id="cp" type="text" name="cp" size="50"><br>   
                 
         <input  class="boutton1" type="submit" value="Réservez">
@@ -49,5 +70,172 @@
     graves, quam difficiles plerisque videntur calamitatum societates! Ad quas non est facile<br/>
     inventu qui descendant. Quamquam Ennius recte.</p>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060023236!2d2.977120494791568!3d50.63104650746587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2sLille!5e0!3m2!1sfr!2sfr!4v1485445413881" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+=======
+            <input id="cp" type="text" name="cp" size="50"><br>
+        <input  class="btn" type="submit" value="Réservez">
+    </form>
+
+</aside>
+
+{% endblock %}
+
+{% block content %}
+
+<!--Page du restaurant-->
+
+<section class="restau_container">
+
+    <h1>{{ dataRest.restaurant.nom_restau }}</h1>
+
+    <img src="{{ "/LilleBio/web" ~ dataRest.restaurant.url_img }}" alt="{{ dataRest.restaurant.nom_image }}" title="{{ dataRest.restaurant.nom_image }}"/><br/>
+
+    <h3>Catégorie : <span class="green">{{ dataRest.restaurant.nomCat }}</span> {% if dataRest.restaurant.etoiles > 0 %} | <span class="green">{{ dataRest.restaurant.etoiles }}</span> étoile(s){% endif %} | Ville : <span class="green">    {{ dataRest.restaurant.ville }}</span></h3>
+
+    {% if dataRest.restaurant.formule == "complet" %}
+
+    <section class="fomuleComplet grid has-gutter">
+        <div class="menu">
+            <h1 class="titre">Menu</h1>
+            <h3>Entrée</h3>
+            <table>
+                {% for entree in dataRest.menu.listeEntrees %}
+                    <tr>
+                        <td>{{ entree.nomPlat }}</td>
+                        <td class="prix">{{ entree.prixPlat }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <h3>Plat</h3>
+            <table>
+                {% for plat in dataRest.menu.listePlats %}
+                <tr>
+                    <td>{{ plat.nomPlat }}</td>
+                    <td class="prix">{{ plat.prixPlat }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h3>Dessert</h3>
+            <table>
+                {% for dessert in dataRest.menu.listeDesserts %}
+                <tr>
+                    <td>{{ dessert.nomPlat }}</td>
+                    <td class="prix">{{ dessert.prixPlat }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="carte">
+            <h1 class="titre">A la carte</h1>
+            <h3>Les entrées</h3>
+            <table>
+                {% for entree in dataRest.menu.listeEntrees %}
+                    <tr>
+                        <td>{{ entree.nomPlat }}</td>
+                        <td class="prix">{{ entree.prixPlat }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <h3>Les plats</h3>
+            <table>
+                {% for plat in dataRest.menu.listePlats %}
+                <tr>
+                    <td>{{ plat.nomPlat }}</td>
+                    <td class="prix">{{ plat.prixPlat }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h3>Les desserts</h3>
+            <table>
+                {% for dessert in dataRest.menu.listeDesserts %}
+                <tr>
+                    <td>{{ dessert.nomPlat }}</td>
+                    <td class="prix">{{ dessert.prixPlat }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+
+    {% elseif dataRest.restaurant.formule == "carte" %}
+
+    <section class="fomuleCarte">
+        <h1 class="titre">Carte</h1>
+        <div class="carte grid has-gutter">
+            <div class="entree">
+                <h3>Les entrées</h3>
+                <table>
+                    {% for entree in dataRest.carte.listeEntrees %}
+                    <tr><td>{{ entree.nomPlat }}</td><td class="prix">{{ entree.prixPlat }} €</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="entree">
+                <h3>Les plats</h3>
+                <table>
+                    {% for plat in dataRest.carte.listePlats %}
+                    <tr><td>{{ plat.nomPlat }}</td><td class="prix">{{ plat.prixPlat }} €</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="entree">
+                <h3>Les desserts</h3>
+                <table>
+                    {% for dessert in dataRest.carte.listeDesserts %}
+                    <tr><td>{{ dessert.nomPlat }}</td><td class="prix">{{ dessert.prixPlat }} €</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
+
+    {% elseif dataRest.restaurant.formule == "menu" %}
+
+    <section class="fomuleCarte">
+        <h1 class="titre">Menu unique</h1>
+        <div class="menu grid has-gutter">
+            <div class="entree">
+                <h3>Les entrées</h3>
+                <table>
+                    {% for entree in dataRest.menu.listeEntrees %}
+                    <tr><td>{{ entree.nomPlat }}</td><td class="prix">{{ entree.prixPlat }} €</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="entree">
+                <h3>Les plats</h3>
+                <table>
+                    {% for plat in dataRest.menu.listePlats %}
+                    <tr><td>{{ plat.nomPlat }}</td><td class="prix">{{ plat.prixPlat }} €</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="entree">
+                <h3>Les desserts</h3>
+                <table>
+                    {% for dessert in dataRest.menu.listeDesserts %}
+                    <tr><td>{{ dessert.nomPlat }}</td><td class="prix">{{ dessert.prixPlat }} €</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
+
+    {% endif %}
+
+
+    <h1 class="titre">Informations</h1>
+    <p>
+        <adress>
+            <strong>{{ dataRest.restaurant.nom_restau }}</strong><br>
+            {{ dataRest.restaurant.rue }}<br>
+            {{ dataRest.restaurant.cp }} - 
+            {{ dataRest.restaurant.ville }}<br>
+        </adress>
+    </p>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060023236!2d2.977120494791568!3d50.63104650746587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2s{{ dataRest.restaurant.ville }}!5e0!3m2!1sfr!2sfr!4v1485445413881" display="block" width="600" margin="auto" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+</section>
+>>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
 
 {% endblock %}
