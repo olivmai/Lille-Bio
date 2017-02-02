@@ -22,5 +22,12 @@ class Restaurant extends Model
 
 		return $troisDerniers;
 	}
+
+	public function reservation()
+	{
+		
+	}
+
+
 }
 

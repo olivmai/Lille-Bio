@@ -18,5 +18,16 @@ $app->get('/restaurant', function () use ($app) {
 	return $app['twig']->render('restaurant.html.twig');
 })->bind('restaurant');
 
+// Script réservation
+$app->post('/reservation', function (Request $request) use ($app) {
+	$reservation=$request->get('reservation');
+	var_dump($request);
+})->bind('reservation');
+
+
+// Toutes les catégories
+$app->post('/resultats', function (Request $request) use ($app) {
+	return $app['twig']->render('resultats.html.twig');
+})->bind('resultats');
 
 

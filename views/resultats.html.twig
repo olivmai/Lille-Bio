@@ -1,0 +1,53 @@
+{% extends 'layout_twocolumn.html.twig'%}
+
+
+        {% block aside %}
+
+            <h2 class="soustitre"> Filtres </h2>
+                <select name="liste_ville">
+                    <option value="Lille" » selected> Lille</option>
+                    <option value="Lomme"> Lomme</option>
+                    <option value="Roubaix">Roubaix</option>
+                    <option value="Tourcoing">Tourcoing</option>
+                </select>
+            <h2 class="soustitre"> Catégories </h2>
+            
+                <input type="radio" name="Cat" value="Cat1">Catégorie1<br/>
+                <input type="radio" name="Cat" value="Cat2">Catégorie2<br/>
+                <input type="radio" name="Cat" value="Cat3">Catégorie3<br/>
+                <input type="radio" name="Cat" value="Cat4">Catégorie4<br/>
+                <input type="radio" name="Cat" value="Cat5">Catégorie5<br/>
+                <input type="radio" name="Cat" value="Cat6">Catégorie6<br/>
+                <input type="radio" name="Cat" value="Cat7">Catégorie7<br/>
+                <input type="radio" name="Cat" value="Cat8">Catégorie8<br/>
+                <input type="radio" name="Cat" value="Cat9">Catégorie9<br/>
+                <input type="radio" name="Cat" value="Cat10">Catégorie10<br/>
+                <input type="radio" name="Cat" value="Cat11">Catégorie11<br/>
+                <input type="radio" name="Cat" value="Cat12">Catégorie12
+
+            <h2 class="soustitre"> &#201;toiles </h2>
+
+                <input type="radio" name="Etoile" value="Etoile1"><img src="images/etoile.png" alt="une étoile"/><br/>
+                <input type="radio" name="Etoile" value="Etoile2"><img src="images/etoile.png" alt="deux étoile"/><img src="images/etoile.png" alt="deux étoile"/><br/>
+                <input type="radio" name="Etoile" value="Etoile3"><img src="images/etoile.png" alt="deux étoile"/><img src="images/etoile.png" alt="deux étoile"/><img src="images/etoile.png" alt="deux étoile"/><br/>
+            
+                <input type="submit" value="Filtrez" class="boutton1">
+        {% endblock %}
+        {% block content %}
+
+            <table width="615px" >
+                <tr>
+                    <th rowspan="2"><img src="images/mini_restau.jpg" alt="Restaurant nom"/></th>
+                    <th>Nom</th>
+                    <th>Ville</th>
+                    <th>Catégorie</th>
+                    <th>Etoiles</th>
+                </tr>
+                <tr>
+                    
+                    <td colspan="4">Post quorum necem nihilo lenius ferociens Gallus ut leo cadaveribus pastus multa huius modi scrutabatur. quae singula narrare non refert, me professione modum, quod evitandum est, excedamus.</td>
+                </tr>
+            </table>
+        {% endblock %}
+</body>
+</html>
