@@ -24,3 +24,6 @@ $app->register(new Silex\Provider\AssetServiceProvider(), array(
 $app['model.restaurant'] = function ($app) {
     return new LilleBio\Model\Restaurant($app['db']);
 };
+$app['model.recherche'] = function ($app) {
+    return new LilleBio\Model\Recherche($app['db']);
+};

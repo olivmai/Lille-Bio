@@ -26,6 +26,14 @@ class Restaurant extends Model
 		return $troisDerniers;
 	}
 
+<<<<<<< HEAD
+	public function reservation()
+	{
+		
+	}
+
+
+=======
 	public function exemple($request)
 	{
 		$champ1 = $request->request->get('champ_01');
@@ -94,5 +102,6 @@ class Restaurant extends Model
 
 		return $pageRestau;
 	}
+>>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
 }
 

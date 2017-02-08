@@ -24,6 +24,19 @@ $app->get('/restaurant/{id}', function ($id) use ($app) {
 	return $app['twig']->render('restaurant.html.twig', array('dataRest' => $pageRestau));
 })->bind('restaurant');
 
+
+// Script réservation
+$app->post('/reservation', function (Request $request) use ($app) {
+	$reservation=$request->get('reservation');
+	var_dump($request);
+})->bind('reservation');
+
+
+// Toutes les catégories
+$app->post('/resultats', function (Request $request) use ($app) {
+	return $app['twig']->render('resultats.html.twig');
+})->bind('resultats');
+
 // Restaurant
 $app->post('/exemple', function (Request $request) use ($app) {
 	$exemple = $app['model.restaurant']->exemple($request);
@@ -45,6 +58,4 @@ $app->post('/recherche-restaurant', function (Request $request) use ($app) {
 	$listeRestau = $app['model.recherche']->rechercheRestau($request);
 	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
 })->bind('recherche_restau');
-
-
 

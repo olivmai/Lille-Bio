@@ -1,6 +1,6 @@
 drop database if exists lillebio;
 
-create database lillebio;
+create database lillebio CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 use lillebio;
 
