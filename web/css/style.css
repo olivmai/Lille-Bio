@@ -123,7 +123,7 @@ header a, footer a {
 }
 
 .titre.accueil{
-	margin-top: 70px;
+	margin-top: 50px;
 }
 
 .soustitre{
@@ -144,6 +144,7 @@ header a, footer a {
 
 #logo_lille_bio{
 	margin-top: 35px;
+	margin-bottom: 35px;
 }
 
 #slogan{
@@ -154,6 +155,19 @@ header a, footer a {
 	color : white;
 	letter-spacing: -4px;
 	padding-bottom: 80px;
+}
+
+form.grid{
+	margin-top: 35px;
+	background-color: #fff;
+	width: 80%;
+	padding: 10px;
+	margin: auto;
+	border-radius: 5px;
+	max-height: 60px;
+}form.grid input{
+	border:0;
+}form.grid select{
 }
 
 /*---- Section Trois derniers ----*/
@@ -227,14 +241,13 @@ hr.aide{
 	margin-top: 10px;
 }
 
-<<<<<<< HEAD
 /*------ formulaire------*/
 
 input {
   font-family : "Trebuchet MS";
   font-size   : 100%;
   background-color:  white;
-=======
+}
 /*=====================================*/
 /*=========== MES RESERVATIONS ========*/
 /*=====================================*/
@@ -246,7 +259,6 @@ input {
 	margin-bottom: 100px;
 }.mesResa .btn{
 	margin-top: 35px;
->>>>>>> 66bc655135f1b3265cc61257c73b89562334855e
 }
 
 /*=====================================*/
@@ -293,6 +305,25 @@ aside.reservation{
 section>header{
 	color: #339933;
 }
+
+/*========================================*/
+/*=========== LISTE RESTAURANTS ==========*/
+/*========================================*/
+ul.liste_restau{
+	margin-top: 35px;
+}
+.restau_info h2{
+	margin-top: -10px;
+	padding-left: 25px;
+}
+.restau_info p{
+	padding-left: 25px;
+	margin-top: -10px;
+}
+.restau_info h2 a{
+	color: #339933;
+}
+
 
 
 /*===========================*/

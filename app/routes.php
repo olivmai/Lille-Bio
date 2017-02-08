@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 $app->get('/', function () use ($app) {
 	// Requete qui récupère les trois derniers restau avec leurs images et catégories
 	$troisDerniersRestau = $app['model.restaurant']->troisDerniersRestau();
+	$trenteProchainsJours = $app['model.recherche']->trenteProchainsJours();
+	$listeCategories = $app['model.recherche']->listeCategories();
 	// Appel de la vue page d'accueil
-    return $app['twig']->render('index.html.twig', array('listeRestau' => $troisDerniersRestau));
+    return $app['twig']->render('index.html.twig', array('listeRestau' => $troisDerniersRestau, 'date' => $trenteProchainsJours, 'listeCat' => $listeCategories));
 })->bind('home');
 
 // Aide utilisateurs
@@ -33,10 +35,16 @@ $app->get('/mes-reservations', function () use ($app) {
 	return $app['twig']->render('mes-reservations.html.twig');
 })->bind('mes_reservations');
 
-// Mes reservations
+// Espace restaurateur
 $app->get('/espace-restaurateur', function () use ($app) {
 	return $app['twig']->render('espace-restaurateur.html.twig');
 })->bind('espace_restau');
+
+// Recherche restau
+$app->post('/recherche-restaurant', function (Request $request) use ($app) {
+	$listeRestau = $app['model.recherche']->rechercheRestau($request);
+	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
+})->bind('recherche_restau');
 
 
 
