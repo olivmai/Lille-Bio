@@ -1,13 +1,18 @@
 {% extends 'layout_fullscreen.html.twig' %}
 
     {% block content %}
+
+    {% for alertSuccess in app.session.flashbag.get('msg_suppr') %}
+    <p class="msgFalse">{{ alertSuccess }}</p>
+    {% endfor %}
+
     <section id="recherche">
 
-           <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
+       <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
 
-              {{ include ("formulaire/Recherche.html.twig") }}
+        {{ include ("formulaire/Recherche.html.twig") }}
 
-           <p id="slogan">Les plus bio restaus, à portée de clic !</p>
+        <p id="slogan">Les plus bio restaus, à portée de clic !</p>
 
     </section>
 
@@ -15,13 +20,19 @@
         <h1 class="titre accueil">Les p'tits nouveaux !</h1>
         <hr>
         <div class="grid-3 has-gutter">
+
             {% for restau in listeRestau %}
+
             <div class="restau">
                 <h4><a href="{{ path('restaurant', {'id': restau.num_restau}) }}">{{ restau.nom_restau }}</a></h4>
                 <img src="{{ "/LilleBio/web" ~ restau.url_img }}" alt="{{ restau.nom_image }}">
                 <p class="lastRestau">{{ restau.nomCat }} {% if restau.etoiles > 0 %} | {{ restau.etoiles }} étoile(s){% endif %} | {{ restau.ville }}</p>
             </div>
+
             {% endfor %}
+
+
+
         </div>
         <a href="{#{ path('liste-restaurants') }#}" class="btn">Voir tous les restaurants > </a>
     </section>

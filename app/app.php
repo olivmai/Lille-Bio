@@ -16,6 +16,8 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\LocaleServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
+$app->register(new Silex\Provider\SessionServiceProvider());
+$app->register(new Silex\Provider\RoutingServiceProvider());
 $app->register(new Silex\Provider\AssetServiceProvider(), array(
     'assets.version' => 'v1'
 ));
@@ -26,4 +28,7 @@ $app['model.restaurant'] = function ($app) {
 };
 $app['model.recherche'] = function ($app) {
     return new LilleBio\Model\Recherche($app['db']);
+};
+$app['model.reservation'] = function ($app) {
+    return new LilleBio\Model\Reservation($app['db']);
 };

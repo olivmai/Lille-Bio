@@ -1,11 +1,11 @@
-<form name="recherche" method="post" action="{{ path('recherche_restau') }}" class="grid">
+<form name="recherche" method="post" action="{{ path('recherche_restau') }}" class="grid" onsubmit="return formVerify()" id="formRecherche">
 	<select name = "date">
 		<option selected="selected">Choisissez une date</option>
 		{% for jour in date %}
 		<option value = "{{ jour.timestamp }}">{{ jour.jour }}</option>
 		{% endfor %}
 	</select>
-	<input id="nbrPers" name="nbrPers" type="text" placeholder="nombre de personnes">
+	<input id="nbrPers" name="nbrPers" type="text" placeholder="nombre de personnes" onkeyup="formVerify()">
 	<select name = "cat">
 		<option value="null" selected="selected">Catégorie (facultatif)</option>
 		{% for categorie in listeCat %}
@@ -13,4 +13,5 @@
 		{% endfor %}
 	</select>
 	<input class="btn" type="submit" value = "Chercher"  />
+	<span class="msgAlert" id="msgForm"></span>
 </form>

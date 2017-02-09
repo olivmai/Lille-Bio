@@ -1,0 +1,27 @@
+{% extends 'layout_fullscreen.html.twig' %}
+
+{% block content %}
+
+	<h1 class="titre resa">Mes réservations</h1>
+
+	<h3 class="titre resa">Consultez, modifiez ou supprimez vos réservations</h3>
+
+	<form action="{{ path('mes_reservations') }}" method="post" class="mesResa">
+
+		<table class="form_table">
+			<tr>
+				<td><label for="numResa">Numéro de la réservation :</label></td>
+				<td><input type="text" name="numResa" id="numResa"></td>
+			</tr>
+			<tr>
+				<td><label for="emailResa">Email renseigné lors de la réservation :</label></td>
+				<td><input type="email" name="emailResa" id="emailResa"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Valider" class="btn"></td>
+			</tr>
+		</table>
+
+	</form>
+
+{% endblock %}
