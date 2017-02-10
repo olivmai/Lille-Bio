@@ -1,83 +1,51 @@
 {% extends 'layout_twocolumn.html.twig'%}
-<<<<<<< HEAD
-=======
+
 
 {% block aside %}
->>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
 
+    {% set date = app.session.get('date') %}
+    {% set timestamp = app.session.get('timestamp') %}
 
-<<<<<<< HEAD
-
-{% block aside %}
-    <form name="coordonnees" method="post" action="{{ path ('reservation')}}">  
-=======
-<aside class="reservation">
+    <aside class="reservation">
 
     <h1>Reservez maintenant !</h1>
 
-    <form name="coordonnees" method="post" action="un_script.php">
->>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
-        <label for="date">Date</label><br/>
-            <input id="date" type="date" name="date" size="50"><br>
-        <label for="heure">Heure</label><br/>
-            <input id="heure" type="time" name="heure" size="50"><br>
-<<<<<<< HEAD
-        <label for="couverts">Nombre de personne(s)</label><br/>
-            <input id="couverts" type="text" name="couverts" size="50"><br>
-        <label for="nom">Nom</label><br/>
-            <input id="nom" type="text" name="nom" size="50"><br>
-        <label for="prenom">Prénom</label><br/>
-            <input id="prenom" type="text" name="prenom" size="50"><br> 
-=======
-        <label for="nom">Nom</label><br/>
-            <input id="nom" type="text" name="nom" size="50"><br>
-        <label for="prenom">Prénom</label><br/>
-            <input id="prenom" type="text" name="prenom" size="50"><br>
->>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
-        <label for="email">Email</label><br/>
-            <input id="email" type="email" name="email" size="50"><br>
-        <label for="telephone">Téléphone</label><br/>
-            <input id="telephone" type="text" name="telephone" size="50"><br/>
-        <label for="adresse">Adresse</label><br/>
-            <input id="adresse" type="text" name="adresse" size="50"><br>
-        <label for="ville">Ville</label><br/>
-            <input id="ville" type="text" name="ville" size="50"><br>
-        <label for="cp">Code postal</label><br/>
-<<<<<<< HEAD
-            <input id="cp" type="text" name="cp" size="50"><br>   
-                
-        <input  class="boutton1" type="submit" value="Réservez">
-    </form><br/>
+        <form name="coordonnees" method="post" action="un_script.php">
+            <label for="date">Date</label><br/>
+                <select name = "date">
+                    <option>Choisissez une date</option>
+                    {% for jour in date %}
+                    <option {% if timestamp == jour.timestamp %}selected{% endif %} value = "{{ jour.timestamp }}">{{ jour.jour }}</option>
+                    {% endfor %}
+                </select>
+            <label for="heure">Heure</label><br/>
+                <select name = "date">
+                    <option selected>Choisissez une heure</option>
+                    <option value="12:00:00">12 h 00</option>
+                    <option value="13:00:00">13 h 00</option>
+                    <option value="19:00:00">19 h 00</option>
+                    <option value="20:00:00">20 h 00</option>
+                </select>
+            <label for="couverts">Nombre de personne(s)</label><br/>
+                <input id="couverts" type="number" name="couverts" size="50"><br>
+            <label for="nom">Nom</label><br/>
+                <input id="nom" type="text" name="nom" size="50"><br>
+            <label for="prenom">Prénom</label><br/>
+                <input id="prenom" type="text" name="prenom" size="50"><br>
+            <label for="email">Email</label><br/>
+                <input id="email" type="email" name="email" size="50"><br>
+            <label for="telephone">Téléphone</label><br/>
+                <input id="telephone" type="text" name="telephone" size="50"><br/>
+            <label for="adresse">Adresse</label><br/>
+                <input id="adresse" type="text" name="adresse" size="50" placeholder="N° et rue"><br>
+                <input id="cp" type="text" name="cp" size="50" placeholder="Code postal"><br>
+                <input id="ville" type="text" name="ville" size="50" placeholder="Ville"><br>
+            <input  class="btn" type="submit" value="Réservez">
+        </form>
+
+    </aside>
 {% endblock %}
 
-
-{% block content %}
-    <img src="images/restaurant_01.jpg" alt="restaurant numero 1" title="restaurant numero 1"/><br/>
-    <p>Itaque verae amicitiae difficillime reperiuntur in iis qui in honoribus reque publica versantur; <br/>
-    ubi enim istum invenias qui honorem amici anteponat suo? Quid? Haec ut omittam, quam<br/>
-    graves, quam difficiles plerisque videntur calamitatum societates! Ad quas non est facile<br/>
-    inventu qui descendant. Quamquam Ennius recte.</p>
-
-    <h1 class="titre">Menu</h1>
-    <h1 class="titre">Prix</h1>
-    <h1 class="titre">Carte</h1>
-    <h2 class="soustitre">Entrée</h2>
-    <h2 class="soustitre">Plat</h2>
-    <p>Dessert</p>
-    <h1 class="titre">Informations</h1>
-    <p>Itaque verae amicitiae difficillime reperiuntur in iis qui in honoribus reque publica versantur; <br/>
-    ubi enim istum invenias qui honorem amici anteponat suo? Quid? Haec ut omittam, quam<br/>
-    graves, quam difficiles plerisque videntur calamitatum societates! Ad quas non est facile<br/>
-    inventu qui descendant. Quamquam Ennius recte.</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060023236!2d2.977120494791568!3d50.63104650746587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2sLille!5e0!3m2!1sfr!2sfr!4v1485445413881" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-=======
-            <input id="cp" type="text" name="cp" size="50"><br>
-        <input  class="btn" type="submit" value="Réservez">
-    </form>
-
-</aside>
-
-{% endblock %}
 
 {% block content %}
 
@@ -236,6 +204,5 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80985.23060023236!2d2.977120494791568!3d50.63104650746587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d579b3256e11%3A0x40af13e81646360!2s{{ dataRest.restaurant.ville }}!5e0!3m2!1sfr!2sfr!4v1485445413881" display="block" width="600" margin="auto" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 </section>
->>>>>>> 4663f9854b4c1963082d1d0334cb1312a9e45b5c
 
 {% endblock %}
