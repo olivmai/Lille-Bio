@@ -8,12 +8,15 @@ function formVerify()
 	if (isNaN(input_nbPers.value)) {
 		msg_form.style.display = 'inline-block';
 		msg_form.innerHTML = "<strong>Attention </strong>: ce champ doit être un nombre";
+		return false;
 	}
 
 	if (input_nbPers.value > 20) {
 		msg_form.style.display = 'inline-block';
 		msg_form.innerHTML = "<strong>Attention </strong>: les réservations son limitées à 20 personnes maximum";
+		return false;
 	}
 
-	return false;
+	return true;
+
 }

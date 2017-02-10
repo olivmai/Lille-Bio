@@ -6,6 +6,7 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 
 // Home page
 $app->get('/', function () use ($app) {
+	$app['session']->remove('timestamp');
 	// Requete qui récupère les trois derniers restau avec leurs images et catégories
 	$troisDerniersRestau = $app['model.restaurant']->troisDerniersRestau();
 	$trenteProchainsJours = $app['model.recherche']->trenteProchainsJours();
@@ -21,6 +22,11 @@ $app->get('/aide-utilisateurs', function () use ($app) {
 
 // Restaurant
 $app->get('/restaurant/{id}', function ($id) use ($app) {
+
+	$app['session']->set('timestamp', $app['session']->get('timestamp'));
+
+	$trenteProchainsJours = $app['model.recherche']->trenteProchainsJours();
+	$app['session']->set('date', $trenteProchainsJours);
 	$pageRestau = $app['model.restaurant']->getRestau($id);
 	return $app['twig']->render('restaurant.html.twig', array('dataRest' => $pageRestau));
 })->bind('restaurant');
@@ -51,8 +57,16 @@ $app->get('/espace-restaurateur', function () use ($app) {
 
 // Recherche restau
 $app->post('/recherche-restaurant', function (Request $request) use ($app) {
+
+	$app['session']->set('timestamp', $request->request->get('date'));
+
+	$trenteProchainsJours = $app['model.recherche']->trenteProchainsJours();
+	$app['session']->set('date', $trenteProchainsJours);
+
 	$listeRestau = $app['model.recherche']->rechercheRestau($request);
+
 	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
+
 })->bind('recherche_restau');
 
 ////////////////////////////
@@ -88,4 +102,13 @@ $app->get('/suppr-resa/{id}', function ($id) use ($app) {
 		return $app['twig']->render('formulaire/mes-reservations.html.twig');
 	}
 })->bind('suppr_resa');
+
+///////////////////////////////////
+///// ESPACE RESTAURATEUR /////////
+///////////////////////////////////
+
+// Inscription restaurateur
+$app->get('/inscription-restaurateur', function (Request $request) use ($app) {
+	return $app['twig']->render('inscription-restaurateur.html.twig');
+})->bind('inscription_restaurateur');
 
