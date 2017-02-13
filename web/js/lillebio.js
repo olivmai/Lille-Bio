@@ -1,5 +1,15 @@
+$(function(){
+
+	// Bouton de fermeture des messages de confirmation
+	$('.closeBtn').click(function(){
+		$('.alert').fadeOut();
+	});
+
+});
+
 var input_nbPers = document.getElementById('nbrPers'),
-	msg_form = document.getElementById('msgForm');
+	msg_form = document.getElementById('msgForm'),
+	msg_close = document.getElementById('pMsg');
 
 function formVerify()
 {
