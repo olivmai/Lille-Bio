@@ -54,6 +54,10 @@
 
 <section class="restau_container">
 
+    {% for alertSuccess in app.session.flashbag.get('msg_success') %}
+    <p class="alert msgFalse">{{ alertSuccess }} <span class="closeBtn" id="closeMsg">X</span></p>
+    {% endfor %}
+
     <h1>{{ dataRest.restaurant.nom_restau }}</h1>
 
     <img src="{{ "/LilleBio/web" ~ dataRest.restaurant.url_img }}" alt="{{ dataRest.restaurant.nom_image }}" title="{{ dataRest.restaurant.nom_image }}"/><br/>

@@ -31,14 +31,6 @@ $app->get('/restaurant/{id}', function ($id) use ($app) {
 	return $app['twig']->render('restaurant.html.twig', array('dataRest' => $pageRestau));
 })->bind('restaurant');
 
-
-// Script réservation
-$app->post('/reservation', function (Request $request) use ($app) {
-	$reservation=$request->get('reservation');
-	var_dump($request);
-})->bind('reservation');
-
-
 // Toutes les catégories
 $app->post('/resultats', function (Request $request) use ($app) {
 	return $app['twig']->render('resultats.html.twig');
@@ -72,6 +64,28 @@ $app->post('/recherche-restaurant', function (Request $request) use ($app) {
 ////////////////////////////
 ///// RESERVATIONS /////////
 ////////////////////////////
+
+// Script réservation
+$app->post('/reservation', function (Request $request) use ($app) {
+	$reservation = $app['model.reservation']->reserver($request);
+	if (!$reservation) {
+		$app['session']->getFlashBag()->add('msg_success', 'Erreur lors de la réservation. Le restaurant est peut-être complet à la date et/ou à l\'heure précisée. Réessayez en modifiant ces informations ou choisissez un autre restaurant.');
+		$numRest = $request->request->get('numRest');
+		return $app->redirect($app["url_generator"]->generate("restaurant", [
+        "id" => $numRest]));
+	}
+
+	$message = \Swift_Message::newInstance()
+        ->setSubject('[LilleBio] Confirmation de réservation')
+        ->setFrom(array('lillebio.cnam@gmail.com'))
+        ->setTo(array('oliviermairet@gmail.com'))
+        ->setBody('Nouveau message reçu de LilleBio : Confirmation de votre réservation !!');
+
+    if ($app['mailer']->send($message)) {
+        $app['session']->getFlashBag()->add('msg_success', 'La réservation a bien été enregistrée. Vous allez recevoir un email de confirmation à l\'adresse mentionnée');
+    	return $app->redirect($app["url_generator"]->generate("home"));
+    }
+})->bind('reservation');
 
 // Mes reservations
 $app->post('/mes-reservations', function (Request $request) use ($app) {

@@ -139,6 +139,24 @@ header a, footer a {
 	font-weight: bold;
 	color :  black;
 }
+section#recherche{
+	position: relative;
+}
+.alert{
+	position: relative;
+}
+#recherche .alert{
+	position: absolute;
+	top: 0;
+	width: 100%;
+}.alert .closeBtn{
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	font-weight: bold;
+}.alert .closeBtn:hover{
+	cursor: pointer;
+}
 
 /*-----Moteur de recherche-----*/
 
@@ -308,7 +326,7 @@ p.msgFalse{
 	background-color: #E08283;
 	color: #D91E18;
 	margin-bottom: 25px;
-	width: 80%;
+	width: 100%;
 	margin: auto;
 }
 
