@@ -26,7 +26,14 @@
             <div class="restau">
                 <h4><a href="{{ path('restaurant', {'id': restau.num_restau}) }}">{{ restau.nom_restau }}</a></h4>
                 <img src="{{ "/LilleBio/web" ~ restau.url_img }}" alt="{{ restau.nom_image }}">
-                <p class="lastRestau">{{ restau.nomCat }} {% if restau.etoiles > 0 %} | {{ restau.etoiles }} étoile(s){% endif %} | {{ restau.ville }}</p>
+                <p class="lastRestau">{{ restau.nomCat }} 
+                {% if restau.etoiles > 0 %}
+                     | 
+                    {% for i in 1.. restau.etoiles %}
+                    <img src="{{ asset('/img/etoile.png') }}" alt="">
+                    {% endfor %}
+                {% endif %}
+                 | {{ restau.ville }}</p>
             </div>
 
             {% endfor %}
