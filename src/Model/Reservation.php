@@ -147,11 +147,11 @@ class Reservation extends Model
 				// éxecution de la requète avec test
 				if ($req->execute()) {
 					// On récupère le numéro de la réservation qu'on vient d'ajouter
-					$sql = "SELECT MAX(numResa) numResa FROM Reservation";
+					$sql = "SELECT LAST_INSERT_ID() numResa FROM Reservation";
 					$lastResa = $this->getDb()->fetchAssoc($sql);
 					$nouvelleResa['numResa'] = $lastResa['numResa'];
 					$nouvelleResa['client'] = $client;
-					return true;
+					return $lastResa['numResa'];
 				}
 				$resa['tablePourResa'] = $tablePourResa;
 			}// Si le client n'existe pas encore en base de données
@@ -211,11 +211,11 @@ class Reservation extends Model
 					// éxecution de la requète avec test
 					if ($req->execute()) {
 						// On récupère le numéro de la réservation qu'on vient d'ajouter
-						$sql = "SELECT MAX(numResa) numResa FROM Reservation";
+						$sql = "SELECT LAST_INSERT_ID() numResa FROM Reservation";
 						$lastResa = $this->getDb()->fetchAssoc($sql);
 						$nouvelleResa['numResa'] = $lastResa['numResa'];
 						$nouvelleResa['client'] = $nouveauClient;
-						return true;
+						return $lastResa['numResa'];
 					}
 					$resa['nouvelleResa'] = $nouvelleResa;
 				}

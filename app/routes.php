@@ -67,25 +67,34 @@ $app->post('/recherche-restaurant', function (Request $request) use ($app) {
 
 // Script réservation
 $app->post('/reservation', function (Request $request) use ($app) {
+
+	// Déclanchement du script de réservation
 	$reservation = $app['model.reservation']->reserver($request);
-	if (!$reservation) {
+	// Si la réservation a échouée
+	if (false === $reservation) {
 		$app['session']->getFlashBag()->add('msg_success', 'Erreur lors de la réservation. Le restaurant est peut-être complet à la date et/ou à l\'heure précisée. Réessayez en modifiant ces informations ou choisissez un autre restaurant.');
 		$numRest = $request->request->get('numRest');
 		return $app->redirect($app["url_generator"]->generate("restaurant", [
         "id" => $numRest]));
 	}
 
+	// Si la réservation est OK
+	// Préparation du message de confirmation
 	$message = \Swift_Message::newInstance()
         ->setSubject('[LilleBio] Confirmation de réservation')
         ->setFrom(array('lillebio.cnam@gmail.com'))
         ->setTo(array('oliviermairet@gmail.com'))
-        ->setBody('Nouveau message reçu de LilleBio : Confirmation de votre réservation !!');
+        ->setBody('Bonjour,<br><br>Nous avons le plaisir de vous confirmer votre réservation pour le <strong>'.date("d/m/Y", $request->request->get('date')).' à '.$request->request->get('heure').'</strong>.<br><br>Vous avez réservé pour <strong>'.$request->request->get('nbPers').' personne(s)</strong> au nom de <strong>'.$request->request->get('prenom').' '.$request->request->get('nom').'</strong>.<br><br>Votre numéro de réservation est le <strong>'.$reservation.'</strong>. Vous pouvez consulter et modifier ou supprimer cette réservation sur le site dans la <a href="http://lillebio-cnam.pe.hu/web/mes-reservations/recherche">rubrique "mes réservations"</a> en y précisant l\'adresse email utilisée lors de votre réservation et ce numéro.<br><br>Bon appétit et à bientôt sur notre site !!<br><br>L\'équipe LilleBio', 'text/html');
 
+    // Essai d'envoi du message
+    // Si le message est bien envoyé
     if ($app['mailer']->send($message)) {
+    	// Enregistrement du message de confirmation en SESSION
         $app['session']->getFlashBag()->add('msg_success', 'La réservation a bien été enregistrée. Vous allez recevoir un email de confirmation à l\'adresse mentionnée');
+        // Redirection vers la page d'accueil avec affichage du msg de confirmation
     	return $app->redirect($app["url_generator"]->generate("home"));
     }
-})->bind('reservation');
+})->bind('reservation');// Fin du script de réservation
 
 // Mes reservations
 $app->post('/mes-reservations', function (Request $request) use ($app) {
