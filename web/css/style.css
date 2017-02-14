@@ -208,6 +208,13 @@ span.msgAlert{
 	background-color: #E08283;
 	color: #D91E18;
 }
+/*---- Bandeau message projet ----*/
+#msgProjetEtude{
+	background-color: #339933;
+	color: #fff;
+	margin-top: -40px;
+	font-size: 20px;
+}
 
 /*---- Section Trois derniers ----*/
 section#dernier{
