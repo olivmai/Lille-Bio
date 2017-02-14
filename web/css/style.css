@@ -407,9 +407,32 @@ ul.liste_restau{
 /*===========================*/
 
 footer#footer{
+	position: relative;
 	background-color: #339933 !important;
 	width: 991px;
 	height : 74px;
+}
+#footer a.footer{
+	margin: 0;
+	padding: 0;
+	display: initial;
+}#footer a.footer:hover{
+	background-color: initial;
+	color: #fff;
+}
+#footer a.footer.social{
+	position: absolute;
+	top: 15px;
+	right: 35px;
+}#footer a.footer.social.first{
+	position: absolute;
+	top: 15px;
+	right: 80px;
+}
+#msgProjetEtude.footer{
+	position: initial;
+	margin-top: 25px;
+	text-align: center;
 }
 
 
