@@ -61,6 +61,12 @@ $app->post('/recherche-restaurant', function (Request $request) use ($app) {
 
 })->bind('recherche_restau');
 
+// Liste restaurant
+$app->get('/liste-restaurants', function () use ($app) {
+	$listeRestau = $app['model.restaurant']->tousLesRestau();
+	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
+})->bind('tous_restau');
+
 ////////////////////////////
 ///// RESERVATIONS /////////
 ////////////////////////////
