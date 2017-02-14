@@ -84,7 +84,7 @@ $app->post('/reservation', function (Request $request) use ($app) {
         ->setSubject('[LilleBio] Confirmation de réservation')
         ->setFrom(array('lillebio.cnam@gmail.com'))
         ->setTo(array('oliviermairet@gmail.com'))
-        ->setBody('Bonjour,<br><br>Nous avons le plaisir de vous confirmer votre réservation pour le <strong>'.date("d/m/Y", $request->request->get('date')).' à '.$request->request->get('heure').'</strong>.<br><br>Vous avez réservé pour <strong>'.$request->request->get('nbPers').' personne(s)</strong> au nom de <strong>'.$request->request->get('prenom').' '.$request->request->get('nom').'</strong>.<br><br>Votre numéro de réservation est le <strong>'.$reservation.'</strong>. Vous pouvez consulter et modifier ou supprimer cette réservation sur le site dans la <a href="http://lillebio-cnam.pe.hu/web/mes-reservations/recherche">rubrique "mes réservations"</a> en y précisant l\'adresse email utilisée lors de votre réservation et ce numéro.<br><br>Bon appétit et à bientôt sur notre site !!<br><br>L\'équipe LilleBio', 'text/html');
+        ->setBody('Bonjour,<br><br>Nous avons le plaisir de vous confirmer votre réservation pour le <strong>'.date("d/m/Y", $request->request->get('date')).' à '.$request->request->get('heure').'</strong> dans le restaurant : <strong>'.$reservation['nomRest'].'</strong>.<br><br>Vous avez réservé pour <strong>'.$request->request->get('nbPers').' personne(s)</strong> au nom de <strong>'.$request->request->get('prenom').' '.$request->request->get('nom').'</strong>.<br><br>Votre numéro de réservation est le <strong>'.$reservation['numResa'].'</strong>. Vous pouvez consulter et modifier ou supprimer cette réservation sur le site dans la <a href="http://lillebio-cnam.pe.hu/web/mes-reservations/recherche">rubrique "mes réservations"</a> en y précisant l\'adresse email utilisée lors de votre réservation et ce numéro.<br><br>Bon appétit et à bientôt sur notre site !!<br><br>L\'équipe LilleBio', 'text/html');
 
     // Essai d'envoi du message
     // Si le message est bien envoyé
@@ -134,4 +134,13 @@ $app->get('/suppr-resa/{id}', function ($id) use ($app) {
 $app->get('/inscription-restaurateur', function (Request $request) use ($app) {
 	return $app['twig']->render('inscription-restaurateur.html.twig');
 })->bind('inscription_restaurateur');
+
+///////////////////////////////////
+///// AUTRES PAGES ///////////////
+//////////////////////////////////
+
+// Page des mentions légales
+$app->get('/mentions-legales', function () use ($app) {
+	return $app['twig']->render('mentions-legales.html.twig');
+})->bind('mentions_legales');
 

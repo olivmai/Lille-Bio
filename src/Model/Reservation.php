@@ -52,6 +52,10 @@ class Reservation extends Model
 		$villeClient = $request->request->get('ville');
 		$commResa = "";
 
+		$reservation = array();
+		$nomRest = $this->getDb()->fetchAssoc("SELECT nomRest FROM Restaurant WHERE numRest = ".$numRest);
+		$reservation['nomRest'] = $nomRest['nomRest'];
+
 		$explodeHeure = explode(":", $request->request->get('heure'));
 
 		// Récupération timestamp avec date et heure
@@ -149,9 +153,9 @@ class Reservation extends Model
 					// On récupère le numéro de la réservation qu'on vient d'ajouter
 					$sql = "SELECT LAST_INSERT_ID() numResa FROM Reservation";
 					$lastResa = $this->getDb()->fetchAssoc($sql);
-					$nouvelleResa['numResa'] = $lastResa['numResa'];
+					$reservation['numResa'] = $lastResa['numResa'];
 					$nouvelleResa['client'] = $client;
-					return $lastResa['numResa'];
+					return $reservation;
 				}
 				$resa['tablePourResa'] = $tablePourResa;
 			}// Si le client n'existe pas encore en base de données
@@ -185,7 +189,7 @@ class Reservation extends Model
 					$tablePourResa = $this->tablePourReservation($numRest, $newTimestamp);
 					$resa['tablePourResa'] = $tablePourResa;
 					// On récupère le numéro du client qu'on vient d'ajouter
-					$sql = "SELECT MAX(numClient) numClient FROM Client";
+					$sql = "SELECT LAST_INSERT_ID() numClient FROM Client";
 					$lastClient = $this->getDb()->fetchAssoc($sql);
 					$nouveauClient['numéro'] = $lastClient['numClient'];
 					// Tous les éléments de la nouvelle réservation a enregistrer en bdd
@@ -213,9 +217,9 @@ class Reservation extends Model
 						// On récupère le numéro de la réservation qu'on vient d'ajouter
 						$sql = "SELECT LAST_INSERT_ID() numResa FROM Reservation";
 						$lastResa = $this->getDb()->fetchAssoc($sql);
-						$nouvelleResa['numResa'] = $lastResa['numResa'];
+						$reservation['numResa'] = $lastResa['numResa'];
 						$nouvelleResa['client'] = $nouveauClient;
-						return $lastResa['numResa'];
+						return $reservation;
 					}
 					$resa['nouvelleResa'] = $nouvelleResa;
 				}
