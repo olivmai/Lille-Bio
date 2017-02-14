@@ -5,6 +5,11 @@ $(function(){
 		$('.alert').fadeOut();
 	});
 
+	$('#submitResa').click(function(){
+		$(this).hide();
+		$('#loaderResa').css('display', 'block');
+	});
+
 });
 
 var input_nbPers = document.getElementById('nbrPers'),
@@ -29,4 +34,9 @@ function formVerify()
 
 	return true;
 
+}
+
+function prevent()
+{
+	return false;
 }

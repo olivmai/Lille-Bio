@@ -41,7 +41,9 @@
                 <input id="adresse" type="text" name="rue" size="50" placeholder="N° et rue"><br>
                 <input id="cp" type="text" name="cp" size="50" placeholder="Code postal"><br>
                 <input id="ville" type="text" name="ville" size="50" placeholder="Ville"><br>
-            <input  class="btn" type="submit" value="Réservez">
+            <textarea name="comm" id="comm" rows="3" placeholder="Un commentaire sur cette réservation ?"></textarea>
+            <span id="loaderResa" class="btn"><img src="{{ asset('/img/loader.gif') }}" alt=""></span>
+            <input id="submitResa"  class="btn" type="submit" value="Réservez">
         </form>
 
     </aside>
