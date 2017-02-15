@@ -4,27 +4,61 @@
 
 <h1 class="titre">Inscription restaurateur</h1>
 
-<form action="">
+<form action="{{ path('enregistrer_restau') }}" method="post" id="addRestau" enctype="multipart/form-data">
 
 	<input type="text" name="nomRest" id="nomRest" placeholder="Nom du restaurant">
 
 	<fieldset>
-		<legend>Adresse</legend>
+		<legend>Coordonnées</legend>
 		<input type="text" name="rueRest" id="rueRest" placeholder="numéro et rue">
 		<input type="number" name="cpRest" id="cpRest" placeholder="Code postal" min="59000" max="59999">
-		<input type="text" name="villeRest" id="villeRest" placeholder="Ville">
+		<input type="text" name="villeRest" id="villeRest" placeholder="Ville"><br>
+		<input type="text" name="telRest" placeholder="N° de téléphone">
+		<input type="email" name="emailRest" placeholder="Email">
 	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Informations sur votre restaurant</legend>
+		<select name="etoile" id="etoile">
+			<option value="" selected>Nombre d'étoiles ?</option>
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<select name="nbTable" id="nbTable">
+			<option value="">Nombre de tables</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+		<select name = "cat">
+			<option value="null" selected="selected">Catégorie</option>
+			{% for categorie in listeCat %}
+			<option value = "{{ categorie.numCat }}">{{ categorie.nomCat }}</option>
+			{% endfor %}
+		</select><br>
+		<label for="formuleRepas">Vos plats sont proposés...</label>
+		<select name="formuleRepas" id="formuleRepas">
+			<option value="">Choisissez une option</option>
+			<option value="carte">Uniquement à la carte</option>
+			<option value="menu">Uniquement au menu</option>
+			<option value="complet">A la carte ET au menu</option>
+		</select>
+	</fieldset>
+	<label for="password">Choisissez un mot de passe</label>
+	<input type="password" name="password" id="password"><br>
+	<label for="image">Ajoutez une image d'illustration</label>
+	<input type="file" name="image"><br>
 
-	<input type="text">
-	<input type="text">
-	<input type="text">
-	<input type="text">
-	<input type="text">
-	<input type="text">
-	<input type="text">
-	<input type="text">
-	<input type="text">
-
+	<input type="submit" class="btn" value="Enregistrer" id="addRestauSub">
 
 </form>
 

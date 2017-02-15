@@ -43,7 +43,8 @@ $app->post('/exemple', function (Request $request) use ($app) {
 })->bind('exemple');
 
 // Espace restaurateur
-$app->get('/espace-restaurateur', function () use ($app) {
+$app->get('/espace-restaurateur', function ($id = null) use ($app) {
+	//$pageRestau = $app['model.restaurant']->getRestau($id);
 	return $app['twig']->render('espace-restaurateur.html.twig');
 })->bind('espace_restau');
 
@@ -138,8 +139,18 @@ $app->get('/suppr-resa/{id}', function ($id) use ($app) {
 
 // Inscription restaurateur
 $app->get('/inscription-restaurateur', function (Request $request) use ($app) {
-	return $app['twig']->render('inscription-restaurateur.html.twig');
+	$listeCategories = $app['model.recherche']->listeCategories();
+	return $app['twig']->render('inscription-restaurateur.html.twig', array('listeCat' => $listeCategories));
 })->bind('inscription_restaurateur');
+
+// Enregistrer restaurateur
+$app->post('/enregistrer-restaurateur', function (Request $request) use ($app) {
+	$restau = $app['model.restaurateur']->enregistrerRestau($request);
+	if (false !== $restau) {
+		$app['session']->set('numRest', $restau['numRest']);
+		return $app->redirect($app["url_generator"]->generate("espace_restau"));
+	}
+})->bind('enregistrer_restau');
 
 ///////////////////////////////////
 ///// AUTRES PAGES ///////////////

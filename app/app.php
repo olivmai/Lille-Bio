@@ -42,3 +42,6 @@ $app['model.recherche'] = function ($app) {
 $app['model.reservation'] = function ($app) {
     return new LilleBio\Model\Reservation($app['db']);
 };
+$app['model.restaurateur'] = function ($app) {
+    return new LilleBio\Model\Restaurateur($app['db']);
+};
