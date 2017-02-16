@@ -94,5 +94,20 @@ class Restaurant extends Model
 
 		return $pageRestau;
 	}
+
+	public function categorieImages(){
+
+		$sql_catImages = "SELECT C.numCat numeroCat, C.nomCat nomCat, C.numImg numeroImg, I.numImg numeroImg, I.nomImg nomImg, I.urlImg URLImg
+		FROM Categorie C
+		LEFT JOIN Image I
+		ON C.numImg = I.numImg
+		WHERE numCat
+		IN (SELECT DISTINCT catRest from Restaurant)";
+
+		$listeCategorieImg = $this->getDb()->fetchAll($sql_catImages);
+
+		return $listeCategorieImg;
+
+	}
 }
 

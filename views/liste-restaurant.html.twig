@@ -1,0 +1,28 @@
+{% extends 'layout_twocolumn.html.twig' %}
+
+{% block aside %}
+
+<h1>Filtres</h1>
+
+{% endblock %}
+
+{% block content %}
+
+<ul class="liste_restau">
+	{% for restau in listeRestau %}
+	<li class="grid restau">
+		<div class="img_container one-quarter">
+			<img src="{{ "/LilleBio/web" ~ restau.url_img }}" alt="">
+		</div>
+		<div class="restau_info">
+			<h2><a href="{{ path('restaurant', {'id': restau.num_restau}) }}">{{ restau.nom_restau }}</a></h2>
+			<p>
+				Catégorie : <strong>{{ restau.nomCat }} {% if restau.etoiles > 0 %} | {{ restau.etoiles }} étoile(s){% endif %}</strong><br>Ville : <strong>{{ restau.ville }}</strong>
+			</p>
+		</div>
+	</li>
+	<hr>
+	{% endfor %}
+</ul>
+
+{% endblock %}

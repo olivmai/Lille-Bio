@@ -1,65 +1,18 @@
-<div class="grid-6 has-gutter">
+	<div class="grid-6 has-gutter">
 
-	<div>
-			<h4>Tradi ch'ti</h4>
-			<img src="{{ asset('/img/categorie/lille.jpg')}}" alt "categorie Tradi ch'ti">
+	{% for categorie in listeCatImg %}
+
+	<div class="categorie">
+			<h4><a href="">{{ categorie.nomCat }}</a></h4>
+			<img src="{{ "/LilleBio/web" ~ categorie.URLImg }}" alt="{{ categorie.nomImg}}">
+
 	</div>
 
-	<div>
-			<h4>Mexicain</h4>
-			<img src="{{ asset('/img/categorie/mexicain.jpg')}}" alt "categorie Mexicain">
-	</div>
 
-	<div>
-			<h4>Thaïlandais</h4>
-			<img src="{{ asset('/img/categorie/thailandais.jpg')}}" alt "categorie Thailandais">
-	</div>
+	{% endfor %}
 
-	<div>
-			<h4>Français</h4>
-			<img src="{{ asset('/img/categorie/français.jpg')}}" alt "Français">
-	</div>
-
-	<div>
-			<h4>Végétarien</h4>
-			<img src="{{ asset('/img/categorie/vegetarien.jpg')}}" alt "Vegetarien">
-	</div>
-
-	<div>
-			<h4>Pizzeria</h4>
-			<img src="{{ asset('/img/categorie/pizzeria.jpg')}}" alt "categorie Pizzeria">
-	</div>
-
-	<div>
-			<h4>Italien</h4>
-			<img src="{{ asset('/img/categorie/italien.jpg')}}" alt "categorie Italien">
-	</div>
-
-	<div>
-			<h4>Créole</h4>
-			<img src="{{ asset('/img/categorie/creole.jpg')}}" alt "categorie Créole" >
-	</div>
-
-	<div>
-			<h4>Burger</h4>
-			<img src="{{ asset('/img/categorie/burger.jpg')}}" alt "categorie Burger">
-	</div>
-
-	<div>
-			<h4>Indien</h4>
-			<img src="{{ asset('/img/categorie/indien.jpg')}}" alt "categorie Italien">
-	</div>
-
-	<div>
-			<h4>Chinois</h4>
-			<img src="{{ asset('/img/categorie/chinois.jpg')}}" alt "categorie Chinois">
-	</div>
-
-	<div>
-			<h4>Japonais</h4>
-			<img src="{{ asset('/img/categorie/japonais.jpg')}}" alt "categorie Japonais">
-	</div>
 
 </div>
+
 
 
