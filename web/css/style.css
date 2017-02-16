@@ -243,6 +243,18 @@ p.lastRestau{
 /*--- Section Catégorie Image ----*/
 
 
+.categorie h4{
+	text-align: center;
+	
+}
+.categorie a{
+	color :#339933;
+}
+
+.categorie h4{
+	margin-bottom: 5px;
+	margin-top: 15px
+}
 /*---- Section COMMENT ------*/
 
 #comment img{

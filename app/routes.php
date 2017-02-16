@@ -70,6 +70,12 @@ $app->get('/liste-restaurants', function () use ($app) {
 	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
 })->bind('tous_restau');
 
+// Liste restaurant par catégorie
+$app->get('/liste-restaurants/{categorie}', function ($categorie) use ($app) {
+	$listeRestau = $app['model.restaurant']->RestaurantparCategorie($categorie);
+	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
+})->bind('tous_restau_categorie');
+
 ////////////////////////////
 ///// RESERVATIONS /////////
 ////////////////////////////
