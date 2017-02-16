@@ -75,5 +75,27 @@ class Restaurateur extends Model
 
 	}
 
+
+	public function connexion($request)
+	{
+		$idForm = $request->request-> get('identifiant');	
+		$mdpForm = $request->request-> get('motdepasse');
+		$id = "SELECT emailRest, mdpRest, numRest
+ 			   FROM restaurant
+ 			   WHERE emailRest ='".$idForm."'"; 
+ 		$recupid = $this->getDb()->fetchAssoc($id);
+
+ 		if ($idForm == $recupid['emailRest']){
+			if (password_verify($mdpForm, $recupid['mdpRest'])){
+				return $recupid['numRest'];
+				} else {
+				echo "! Vous n'avez pas entré de mot de passe, ou nous ne reconnaisson pas ce dernier !";
+				}
+		}else{
+			echo "Nous ne reconnaissons pas votre email. Etes-vous inscrit?";
+		}
+	}
+
+
 }
 

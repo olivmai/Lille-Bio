@@ -154,6 +154,20 @@ $app->post('/enregistrer-restaurateur', function (Request $request) use ($app) {
 	}
 })->bind('enregistrer_restau');
 
+// form login
+$app->get('/connexion', function () use ($app) {
+	return $app['twig']->render('formulaire/connexion.html.twig');
+})->bind('connexion');
+// connexion redirection
+$app->post('/verifconnexion', function(Request $request) use($app) {
+	$etat = $app['model.restaurateur']->connexion($request);
+	var_dump($etat);
+	if ($etat){
+		$app['session']->set('numRest', $etat);
+		return $app->redirect($app["url_generator"]->generate("espace_restau"));
+	}
+})->bind('verifconnexion');
+
 ///////////////////////////////////
 ///// AUTRES PAGES ///////////////
 //////////////////////////////////

@@ -434,6 +434,19 @@ ul.liste_restau{
 	color: #339933;
 }
 
+/*============================================*/
+/*=========== FORMULAIRE DE CONNEXION ========*/
+/*============================================*/
+
+.formuconnexion {
+	text-align: center;
+	margin-top: 3%;
+}
+
+#formuinput {
+	margin-bottom: 3%;
+}
+
 
 
 /*===========================*/
