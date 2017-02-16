@@ -30,7 +30,7 @@ a{
 a:hover{
 	color : black;
 }
-a.btn, input.btn{
+a.btn, input.btn, span.btn{
 	text-decoration: none;
 	padding: 10px 15px;
 	border: 1px solid #339933;
@@ -38,6 +38,12 @@ a.btn, input.btn{
 	color: #fff;
 }a.btn:hover, input.btn:hover{
 	cursor: pointer;
+}
+span.btn{
+	display: none;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
 }
 a.btn.red{
 	border: 1px solid #D91E18;
@@ -94,7 +100,7 @@ header a, footer a {
 	text-decoration:none;
 	color : white;
 }header a:hover{
-	color : white;
+	color : #339933;
 }
 /*===========================*/
 /*======= PAGE D'ACCUEIL ====*/
@@ -138,6 +144,24 @@ header a, footer a {
 	font-size:  0.9em;
 	font-weight: bold;
 	color :  black;
+}
+section#recherche{
+	position: relative;
+}
+.alert{
+	position: relative;
+}
+#recherche .alert{
+	position: absolute;
+	top: 0;
+	width: 100%;
+}.alert .closeBtn{
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	font-weight: bold;
+}.alert .closeBtn:hover{
+	cursor: pointer;
 }
 
 /*-----Moteur de recherche-----*/
@@ -189,6 +213,13 @@ span.msgAlert{
 	padding: 15px;
 	background-color: #E08283;
 	color: #D91E18;
+}
+/*---- Bandeau message projet ----*/
+#msgProjetEtude{
+	background-color: #339933;
+	color: #fff;
+	margin-top: -40px;
+	font-size: 20px;
 }
 
 /*---- Section Trois derniers ----*/
@@ -308,7 +339,7 @@ p.msgFalse{
 	background-color: #E08283;
 	color: #D91E18;
 	margin-bottom: 25px;
-	width: 80%;
+	width: 100%;
 	margin: auto;
 }
 
@@ -344,7 +375,7 @@ aside.reservation{
 	color: #fff;
 }aside.reservation form{
 	margin-top: 20px;
-}aside.reservation form>input.btn{
+}aside.reservation form>input.btn, aside.reservation form>input.btn{
 	display: block;
 	margin: 20px 0px 0px 0px;
 	width: 100%;
@@ -355,6 +386,30 @@ aside.reservation{
 /*========================================*/
 section>header{
 	color: #339933;
+}
+form#addRestau{
+	width: 80%;
+	margin: auto;
+	padding: 20px;
+	box-shadow: 0px 3px 5px #339933;
+}
+form#addRestau input{
+	border: solid 1px #339933;
+	padding: 5px;
+	border-radius: 3px;
+}form#addRestau fieldset{
+	padding-left: 0;
+}form#addRestau fieldset input{
+	margin-bottom: 10px;
+}form#addRestau input#password{
+	margin-bottom: 15px;
+}form#addRestau #addRestauSub{
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+	margin-top: 35px;
+}form#addRestau input#nomRest{
+	width: 100%;
 }
 
 /*========================================*/
@@ -382,9 +437,32 @@ ul.liste_restau{
 /*===========================*/
 
 footer#footer{
+	position: relative;
 	background-color: #339933 !important;
 	width: 991px;
 	height : 74px;
+}
+#footer a.footer{
+	margin: 0;
+	padding: 0;
+	display: initial;
+}#footer a.footer:hover{
+	background-color: initial;
+	color: #fff;
+}
+#footer a.footer.social{
+	position: absolute;
+	top: 15px;
+	right: 35px;
+}#footer a.footer.social.first{
+	position: absolute;
+	top: 15px;
+	right: 80px;
+}
+#msgProjetEtude.footer{
+	position: initial;
+	margin-top: 25px;
+	text-align: center;
 }
 
 

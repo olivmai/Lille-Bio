@@ -15,6 +15,9 @@
 
 {% block content %}
 
+	{% set numRest = app.session.get('numRest') %}
+	{{ dump(numRest) }}
+
 <section id="coordonnees">
 	<header><h1>Informations sur le restaurant</h1></header>
 		<form name="Coordonnees" method="post"action="script_espace_restaurateur.php">	

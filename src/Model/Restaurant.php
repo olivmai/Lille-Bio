@@ -95,5 +95,23 @@ class Restaurant extends Model
 		return $pageRestau;
 	}
 
+
+	public function tousLesRestau()
+	{
+		$sql =
+			"SELECT i.nomImg nom_image, i.urlImg url_img, r.numRest num_restau, r.nomRest nom_restau, r.catRest cat_restau, r.etoileRest etoiles, r.villeRest ville, c.nomCat
+			FROM Restaurant r
+			LEFT JOIN Image i
+			ON i.numImg = r.numImg
+			LEFT JOIN Categorie c
+			ON c.numCat = r.catRest
+			ORDER BY r.nomRest";
+
+		$listeRestau = $this->getDb()->fetchAll($sql);
+
+		return $listeRestau;
+	}
+
+
 }
 

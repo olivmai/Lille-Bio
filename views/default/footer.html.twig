@@ -1,10 +1,13 @@
-<footer id="footer">
-   <nav class="full grid">
-	    <a href="mailto:votrenom@bidule.com">Contactez-nous</a>
-	    <a href="mentions_legales.html">Mentions légales</a>
-	    <p id="foo01">Partagez !<br>
-	        <a href="https://www.facebook.com/" target="_blank"><img src ="{{ asset('img/facebook.png') }}" target="_blank" alt="Logo Facefook"/></a>
-	        <a href="https://twitter.com/" target="_blank"><img src ="{{ asset('img/tweeter.png') }}" target="_blank" alt="Logo Tweeter"/></a>
-	    </p>
-    </nav>
+<footer id="footer" class="full">
+	<div class="grid">
+		<a class="btn" href="mailto:lillebio.cnam@gmail.com">Contactez-nous</a>
+	    <a class="btn" href="{{ path('mentions_legales') }}">Mentions légales</a>
+	    <div>
+	    <a class="footer social first" href="https://www.facebook.com/" target="_blank"><img src ="{{ asset('img/facebook.png') }}" target="_blank" alt="Logo Facefook"/></a>
+	    <a class="footer social 2" href="https://twitter.com/" target="_blank"><img src ="{{ asset('img/tweeter.png') }}" target="_blank" alt="Logo Tweeter"/></a>
+	    </div>
+	</div>
+	<p class="footer" id="msgProjetEtude">
+        « Le projet présenté sur ce site est un exercice de formation. Les restaurants et toutes les informations contenues sur la plateforme sont purement fictifs.»
+    </p>
 </footer>

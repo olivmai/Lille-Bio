@@ -17,7 +17,14 @@
 		<div class="restau_info">
 			<h2><a href="{{ path('restaurant', {'id': restau.num_restau}) }}">{{ restau.nom_restau }}</a></h2>
 			<p>
-				Catégorie : <strong>{{ restau.nomCat }} {% if restau.etoiles > 0 %} | {{ restau.etoiles }} étoile(s){% endif %}</strong><br>Ville : <strong>{{ restau.ville }}</strong>
+				Catégorie : <strong>{{ restau.nomCat }} 
+				{% if restau.etoiles > 0 %}
+	                 | 
+	                {% for i in 1.. restau.etoiles %}
+	                <img src="{{ asset('/img/etoile.png') }}" alt="">
+	                {% endfor %}
+                {% endif %}
+            	</strong><br>Ville : <strong>{{ restau.ville }}</strong>
 			</p>
 		</div>
 	</li>
