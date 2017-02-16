@@ -1,13 +1,22 @@
 {% extends 'layout_fullscreen.html.twig' %}
 
     {% block content %}
+
     <section id="recherche">
 
-           <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
+        {% for alertSuccess in app.session.flashbag.get('msg_success') %}
+        <p class="alert msgSuccess" id="pMsg">{{ alertSuccess }} <span class="closeBtn" id="closeMsg">X</span></p>
+        {% endfor %}
 
-              {{ include ("formulaire/Recherche.html.twig") }}
+       <img src="{{ asset('/img/Logo_lille_bio.png')}}" alt="logo Lille  Bio" id="logo_lille_bio" />
 
-           <p id="slogan">Les plus bio restaus, à portée de clic !</p>
+        {{ include ("formulaire/Recherche.html.twig") }}
+
+        <p id="slogan">Les plus bio restaus, à portée de clic !</p>
+
+        <p id="msgProjetEtude">
+            « Le projet présenté sur ce site est un exercice de formation. Les restaurants et toutes les informations contenues sur la plateforme sont purement fictifs.»
+        </p>
 
     </section>
 
@@ -15,15 +24,28 @@
         <h1 class="titre accueil">Les p'tits nouveaux !</h1>
         <hr>
         <div class="grid-3 has-gutter">
+
             {% for restau in listeRestau %}
+
             <div class="restau">
                 <h4><a href="{{ path('restaurant', {'id': restau.num_restau}) }}">{{ restau.nom_restau }}</a></h4>
                 <img src="{{ "/LilleBio/web" ~ restau.url_img }}" alt="{{ restau.nom_image }}">
-                <p class="lastRestau">{{ restau.nomCat }} {% if restau.etoiles > 0 %} | {{ restau.etoiles }} étoile(s){% endif %} | {{ restau.ville }}</p>
+                <p class="lastRestau">{{ restau.nomCat }} 
+                {% if restau.etoiles > 0 %}
+                     | 
+                    {% for i in 1.. restau.etoiles %}
+                    <img src="{{ asset('/img/etoile.png') }}" alt="">
+                    {% endfor %}
+                {% endif %}
+                 | {{ restau.ville }}</p>
             </div>
+
             {% endfor %}
+
+
+
         </div>
-        <a href="{#{ path('liste-restaurants') }#}" class="btn">Voir tous les restaurants > </a>
+        <a href="{{ path('tous_restau') }}" class="btn">Voir tous les restaurants > </a>
     </section>
 
      <section id="categorie">
@@ -80,7 +102,7 @@
      <section id="restaurateur">
         <h1 class="titre accueil">Vous êtes restaurateur ?</h1>
         <hr>
-        <a href=""><img src="{{ asset('/img/Banniere_restaurateur.jpg') }}" alt="Vous êtes restaurateur"/></a>
+        <a href="{{ path('inscription_restaurateur') }}"><img src="{{ asset('/img/Banniere_restaurateur.jpg') }}" alt="Vous êtes restaurateur"/></a>
 
     </section>
 {% endblock %}

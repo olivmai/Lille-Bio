@@ -20,6 +20,9 @@ body{
 	max-width: 991px;
 	margin: auto;
 }
+div#main_content, div#aside{
+	min-height: 100vh;
+}
 a{
 	text-decoration:none;
 	color: #252628;
@@ -27,7 +30,7 @@ a{
 a:hover{
 	color : black;
 }
-a.btn, input.btn{
+a.btn, input.btn, span.btn{
 	text-decoration: none;
 	padding: 10px 15px;
 	border: 1px solid #339933;
@@ -35,6 +38,16 @@ a.btn, input.btn{
 	color: #fff;
 }a.btn:hover, input.btn:hover{
 	cursor: pointer;
+}
+span.btn{
+	display: none;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+a.btn.red{
+	border: 1px solid #D91E18;
+	background-color: #D91E18;
 }
 .form_table, .form_table tr, .form_table td, .form_table th{
 	border: none;
@@ -87,7 +100,7 @@ header a, footer a {
 	text-decoration:none;
 	color : white;
 }header a:hover{
-	color : white;
+	color : #339933;
 }
 /*===========================*/
 /*======= PAGE D'ACCUEIL ====*/
@@ -132,6 +145,24 @@ header a, footer a {
 	font-weight: bold;
 	color :  black;
 }
+section#recherche{
+	position: relative;
+}
+.alert{
+	position: relative;
+}
+#recherche .alert{
+	position: absolute;
+	top: 0;
+	width: 100%;
+}.alert .closeBtn{
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	font-weight: bold;
+}.alert .closeBtn:hover{
+	cursor: pointer;
+}
 
 /*-----Moteur de recherche-----*/
 
@@ -167,7 +198,28 @@ form.grid{
 	max-height: 60px;
 }form.grid input{
 	border:0;
-}form.grid select{
+}
+form#formRecherche{
+	position: relative;
+}
+span.msgAlert{
+	display: none;
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	line-height: 0px;
+	padding: 15px;
+	background-color: #E08283;
+	color: #D91E18;
+}
+/*---- Bandeau message projet ----*/
+#msgProjetEtude{
+	background-color: #339933;
+	color: #fff;
+	margin-top: -40px;
+	font-size: 20px;
 }
 
 /*---- Section Trois derniers ----*/
@@ -264,6 +316,36 @@ input {
 }.mesResa .btn{
 	margin-top: 35px;
 }
+p.date_resa{
+	padding: 3px 10px;
+	background-color: #339933;
+	color: #fff;
+}
+h5.restau a{
+	color: #339933;
+}
+p.msgSuccess{
+	padding: 15px;
+	border-radius: 3px;
+	color: #339933;
+	text-align: center;
+	background-color: #8FE38F;
+	border: 1px solid #339933;
+	margin-bottom: 25px;
+	width: 80%;
+	margin: auto;
+}
+p.msgFalse{
+	padding: 15px;
+	border-radius: 3px;
+	text-align: center;
+	border: 1px solid #D91E18;
+	background-color: #E08283;
+	color: #D91E18;
+	margin-bottom: 25px;
+	width: 100%;
+	margin: auto;
+}
 
 /*=====================================*/
 /*=========== PAGE RESTAURANT =========*/
@@ -297,7 +379,7 @@ aside.reservation{
 	color: #fff;
 }aside.reservation form{
 	margin-top: 20px;
-}aside.reservation form>input.btn{
+}aside.reservation form>input.btn, aside.reservation form>input.btn{
 	display: block;
 	margin: 20px 0px 0px 0px;
 	width: 100%;
@@ -308,6 +390,30 @@ aside.reservation{
 /*========================================*/
 section>header{
 	color: #339933;
+}
+form#addRestau{
+	width: 80%;
+	margin: auto;
+	padding: 20px;
+	box-shadow: 0px 3px 5px #339933;
+}
+form#addRestau input{
+	border: solid 1px #339933;
+	padding: 5px;
+	border-radius: 3px;
+}form#addRestau fieldset{
+	padding-left: 0;
+}form#addRestau fieldset input{
+	margin-bottom: 10px;
+}form#addRestau input#password{
+	margin-bottom: 15px;
+}form#addRestau #addRestauSub{
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+	margin-top: 35px;
+}form#addRestau input#nomRest{
+	width: 100%;
 }
 
 /*========================================*/
@@ -335,9 +441,32 @@ ul.liste_restau{
 /*===========================*/
 
 footer#footer{
+	position: relative;
 	background-color: #339933 !important;
 	width: 991px;
 	height : 74px;
+}
+#footer a.footer{
+	margin: 0;
+	padding: 0;
+	display: initial;
+}#footer a.footer:hover{
+	background-color: initial;
+	color: #fff;
+}
+#footer a.footer.social{
+	position: absolute;
+	top: 15px;
+	right: 35px;
+}#footer a.footer.social.first{
+	position: absolute;
+	top: 15px;
+	right: 80px;
+}
+#msgProjetEtude.footer{
+	position: initial;
+	margin-top: 25px;
+	text-align: center;
 }
 
 

@@ -16,9 +16,21 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\LocaleServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
+$app->register(new Silex\Provider\SessionServiceProvider());
+$app->register(new Silex\Provider\RoutingServiceProvider());
+$app->register(new Silex\Provider\SwiftmailerServiceProvider());
 $app->register(new Silex\Provider\AssetServiceProvider(), array(
     'assets.version' => 'v1'
 ));
+
+$app['swiftmailer.options'] = array(
+    'host' => 'smtp.gmail.com',
+    'port' => '465',
+    'username' => 'lillebio.cnam@gmail.com',
+    'password' => 'cnamweb2017',
+    'encryption' => 'ssl',
+    'auth_mode' => 'login'
+);
 
 // Register services.
 $app['model.restaurant'] = function ($app) {
@@ -26,4 +38,10 @@ $app['model.restaurant'] = function ($app) {
 };
 $app['model.recherche'] = function ($app) {
     return new LilleBio\Model\Recherche($app['db']);
+};
+$app['model.reservation'] = function ($app) {
+    return new LilleBio\Model\Reservation($app['db']);
+};
+$app['model.restaurateur'] = function ($app) {
+    return new LilleBio\Model\Restaurateur($app['db']);
 };

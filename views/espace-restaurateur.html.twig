@@ -15,6 +15,9 @@
 
 {% block content %}
 
+	{% set numRest = app.session.get('numRest') %}
+	{{ dump(numRest) }}
+
 <section id="coordonnees">
 	<header><h1>Informations sur le restaurant</h1></header>
 		<form name="Coordonnees" method="post"action="script_espace_restaurateur.php">	
@@ -238,7 +241,7 @@
 				</form>
 				</td>
 				<td>
-				<form name="Menus" method="post"action="script.php">
+				<form name="Menus1" method="post"action="script_menus.php">
 					<table>
 						<tr>
 							<td colspan="5"><h1>Menus</h1></td>
@@ -250,28 +253,35 @@
 						<tr>
 							<td colspan="1"><b>Nom</b></td>
 							
-							<td colspan="3"><input id="NomMenu1" type="text" name="NomMenu1" size="30"></td>
+							<td colspan="3"><input id="NomMenu1" type="text" name="NomMenu" size="30"></td>
 							
-							<td><input id="PrixMenu1" type="text" name="PrixMenu1" size="4"></td>
+							<td><input id="PrixMenu1" type="text" name="PrixMenu" size="4"></td>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Entrée</b></td>
 							
-							<td colspan="3"><input id="EntreeMenu1" type="text" name="EntreeMenu1" size="30"></td>
-							
+							<td colspan="3"><input id="EntreeMenu1" type="text" name="EntreeMenu" size="30"></td>
+							<input type='hidden' name='catEntreeMenu' value='Entree'>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Plat</b></td>
 							
-							<td colspan="3"><input id="PlatMenu1" type="text" name="PlatMenu1" size="30"></td>
+							<td colspan="3"><input id="PlatMenu1" type="text" name="PlatMenu" size="30"></td>
+							<input type='hidden' name='catPlatMenu' value='Plat'>
 							
 						</tr>
 						<tr>
 							<td colspan="1"><b>Dessert</b></td>
 							
-							<td colspan="3"><input id="DessertMenu1" type="text" name="DessertMenu1" size="30"></td>
+							<td colspan="3"><input id="DessertMenu1" type="text" name="DessertMenu" size="30"></td>
+							<input type='hidden' name='catDessertMenu' value='Dessert'>
 							
 						</tr>
+						<tr>
+							<td colspan="4"><input  class="btn" type="submit" name="EnregistrerMenu1" value = "Enregistrez" ></td>
+						</tr>
+					</form>
+					<form name="Menus2" method="post"action="script_menus.php">
 						<tr>
 							<td colspan="5">
 						</tr>
@@ -282,28 +292,33 @@
 						<tr>
 							<td colspan="1"><b>Nom</b></td>
 							
-							<td colspan="3"><input id="NomMenu2" type="text" name="NomMenu2" size="30"></td>
+							<td colspan="3"><input id="NomMenu2" type="text" name="NomMenu" size="30"></td>
 							
-							<td><input id="PrixMenu2" type="text" name="PrixMenu2" size="4"></td>
+							<td><input id="PrixMenu2" type="text" name="PrixMenu" size="4"></td>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Entrée</b></td>
 							
-							<td colspan="3"><input id="EntreeMenu2" type="text" name="EntreeMenu2" size="30"></td>
-							
+							<td colspan="3"><input id="EntreeMenu2" type="text" name="EntreeMenu" size="30"></td>
+							<input type='hidden' name='catEntreeMenu' value='Entree'>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Plat</b></td>
 							
-							<td colspan="3"><input id="PlatMenu2" type="text" name="PlatMenu2" size="30"></td>
-							
+							<td colspan="3"><input id="PlatMenu2" type="text" name="PlatMenu" size="30"></td>
+							<input type='hidden' name='catPlatMenu' value='Plat'>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Dessert</b></td>
 							
-							<td colspan="3"><input id="DessertMenu2" type="text" name="DessertMenu2" size="30"></td>
-							
+							<td colspan="3"><input id="DessertMenu2" type="text" name="DessertMenu" size="30"></td>
+							<input type='hidden' name='catDessertMenu' value='Dessert'>
 						</tr>
+						<tr>
+							<td colspan="4"><input  class="btn" type="submit" name="EnregistrerMenu1" value = "Enregistrez" ></td>
+						</tr>
+					</form>
+					<form name="Menus3" method="post"action="script_menus.php">
 						<tr>
 							<td colspan="5">
 						</tr>
@@ -314,25 +329,27 @@
 						<tr>
 							<td colspan="1"><b>Nom</b></td>
 							
-							<td colspan="3"><input id="NomMenu3" type="text" name="NomMenu3" size="30"></td>
+							<td colspan="3"><input id="NomMenu3" type="text" name="NomMenu" size="30"></td>
 							
-							<td><input id="PrixMenu3" type="text" name="PrixMenu3" size="4"></td>
+							<td><input id="PrixMenu3" type="text" name="PrixMenu" size="4"></td>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Entrée</b></td>
 							
-							<td colspan="3"><input id="EntreeMenu3" type="text" name="EntreeMenu3" size="30"></td>
+							<td colspan="3"><input id="EntreeMenu3" type="text" name="EntreeMenu" size="30"></td>
+							<input type='hidden' name='catEntreeMenu' value='Entree'>
 							
 						</tr>
 						<tr>
 							<td colspan="1"><b>Plat</b></td>
 							
-							<td colspan="3"><input id="PlatMenu3" type="text" name="PlatMenu3" size="30"></td>
-							
+							<td colspan="3"><input id="PlatMenu3" type="text" name="PlatMenu" size="30"></td>
+							<input type='hidden' name='catPlatMenu' value='Plat'>
 						</tr>
 						<tr>
 							<td colspan="1"><b>Dessert</b></td>
-							<td colspan="3"><input id="DessertMenu3" type="text" name="DessertMenu3" size="30"></td>
+							<td colspan="3"><input id="DessertMenu3" type="text" name="DessertMenu" size="30"></td>
+							<input type='hidden' name='catDessertMenu' value='Dessert'>
 							
 						</tr>
 						<tr>
@@ -343,13 +360,14 @@
 							<td colspan="5"><input class="btn" type="submit" name="EnregistrerMenus" value="Enregistrez"></td>
 						</tr>
 				</table>
-			<form />
+			</form>
+			
 		</td>
 		</tr>
 	</table>
 </section>
 <section id="reservations">
-
+			
 	<header><h1>Réservations</h1></header>
 	<table>
 		<tr>
@@ -362,19 +380,19 @@
 			<td colspan="2"><input id="HeureResadujour1" type="text" name="Resadujour1" size="10"></td>
 			<td colspan="2"><input id="NomResadujour1" type="text" name="NomResadujour1" size="30"> </td>
 			<td colspan="2"> <input id="Couvertsresadujour1" type="text" name="CouvertsResadujour1" size="10"> </td>
-			<td colspan="1"><input  class="btn" type="submit" name="EnvoyerResadujour1" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="HeureResadujour2" type="text" name="Resadujour2" size="10"></td>
 			<td colspan="2"><input id="NomResadujour2" type="text" name="NomResadujour2" size="30"> </td>
 			<td colspan="2"> <input id="Couvertsresadujour2" type="text" name="CouvertsResadujour2" size="10"> </td>
-			<td colspan="1"><input  class="btn" type="submit" name="EnvoyerResadujour2" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="HeureResadujour3" type="text" name="Resadujour3" size="10"></td>
 			<td colspan="2"><input id="NomResadujour3" type="text" name="NomResadujour3" size="30"> </td>
 			<td colspan="2"> <input id="Couvertsresadujour3" type="text" name="CouvertsResadujour3" size="10"> </td>
-			<td colspan="1"><input  class="btn" type="submit" name="EnvoyerResadujour3" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 	</table>
 	<h4>Les prochaines</h4>
@@ -389,31 +407,31 @@
 			<td colspan="2"><input id="HeureResaAVenir1" type="text" name="HeureResaAVenir1" size="10"></td>
 			<td colspan="2"><input id="NomResaAVenir1" type="text" name="NomResaAVenir1" size="30"> </td>
 			<td colspan="2"><input id="CouvertsResaAvenir1" type="text" name="CouvertsResaAvenir1" size="10"> </td>
-			<td colspan="1"><input class="btn" type="submit" name="EnvoyerResaAVenir1" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="HeureResaAVenir2" type="text" name="HeureResaAVenir2" size="10"></td>
 			<td colspan="2"><input id="NomResaAVenir2" type="text" name="NomResaAVenir2" size="30"> </td>
 			<td colspan="2"> <input id="CouvertsResaAvenir2" type="text" name="CouvertsResaAvenir2" size="10"> </td>
-			<td colspan="1"><input class="btn" type="submit" name="EnvoyerResaAVenir2" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="HeureResaAVenir3" type="text" name="HeureResaAVenir3" size="10"></td>
 			<td colspan="2"><input id="NomResaAVenir3" type="text" name="NomResaAVenir3" size="30"> </td>
 			<td colspan="2"><input id="CouvertsResaAvenir3" type="text" name="CouvertsResaAvenir3" size="10"> </td>
-			<td colspan="1"><input class="btn" type="submit" name="EnvoyerResaAVenir3" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="HeureResaAVenir4" type="text" name="HeureResaAVenir4" size="10"></td>
 			<td colspan="2"><input id="NomResaAVenir4" type="text" name="NomResaAVenir4" size="30"> </td>
 			<td colspan="2"> <input id="CouvertsResaAvenir4" type="text" name="CouvertsResaAvenir4" size="10"> </td>
-			<td colspan="1"><input  class="btn" type="submit" name="EnvoyerResaAVenir4" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="HeureResaAVenir5" type="text" name="HeureResaAVenir5" size="10"></td>
 			<td colspan="2"><input id="NomResaAVenir5" type="text" name="NomResaAVenir5" size="30"> </td>
 			<td colspan="2"> <input id="CouvertsResaAvenir5" type="text" name="CouvertsResaAvenir5" size="10"> </td>
-			<td colspan="1"><input class="btn" type="submit" name="EnvoyerResaAVenir5" value="Envoyez"> </td>
+			<td colspan="1"><a class="btn" href="">Envoyez</a></td>
 		</tr>
 	</table>
 </section>

@@ -7,7 +7,8 @@
         "symfony/form": "~2.8|3.0.*",
 	    "symfony/translation": "~2.8|3.0.*",
 	    "symfony/config": "~2.8|3.0.*",
-        "symfony/asset": "~2.8|3.0.*"
+        "symfony/asset": "~2.8|3.0.*",
+        "swiftmailer/swiftmailer": "5.4.5"
     },
     "autoload": {
         "psr-4": {"LilleBio\\": "src"}

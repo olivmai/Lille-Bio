@@ -2,26 +2,60 @@
 
 {% block content %}
 
-	<h1 class="titre resa">Mes réservations</h1>
+	{% set restau = result.restau %}
+	{% set resa = result.resa %}
 
-	<h3 class="titre resa">Consultez, modifiez ou supprimez vos réservations</h3>
+	<h2 class="titre" style="margin-top:50px;">Modifier ou supprimer votre réservation</h2>
 
-	<form action="" class="mesResa">
+	{% for alertSuccess in app.session.flashbag.get('msg_success') %}
+	<p class="msgSuccess">{{ alertSuccess }}</p>
+	{% endfor %}
 
-		<table class="form_table">
-			<tr>
-				<td><label for="numResa">Numéro de la réservation :</label></td>
-				<td><input type="text" name="numResa" id="numResa"></td>
-			</tr>
-			<tr>
-				<td><label for="emailResa">Email renseigné lors de la réservation :</label></td>
-				<td><input type="email" name="emailResa" id="emailResa"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Valider" class="btn"></td>
-			</tr>
-		</table>
+	{% for alertFalse in app.session.flashbag.get('msg_suppr') %}
+	<p class="msgFalse">{{ alertFalse }}</p>
+	{% endfor %}
 
-	</form>
+	<div class="grid has-gutter">
+		<div id="info_client">
+
+			<h4>Vos informations</h4>
+			<hr>
+			<h5>{{ resa.prenomClient }} {{ resa.nomClient|upper }}</h5>
+			<p>
+				<adress>
+					{{ resa.rueClient }}<br>
+					{{ resa.cpClient }} - {{ resa.villeClient }}
+				</adress><br>
+				Email : {{ resa.emailClient }}<br>
+				Télléphone : {{ "0" ~ resa.telClient }}
+			</p>
+		</div>
+		<div id="info_resa">
+			<h4>Votre réservation</h4>
+			<hr>
+			<h5 style="margin-bottom:0;" class="restau">
+				<a href="{{ path('restaurant', {'id': restau.numRest}) }}">{{ restau.nomRest }}</a>
+			</h5>
+			<p class="date_resa">
+				Le {{ resa.dateResa|date("d - m - Y") }} à {{ resa.dateResa|date("H:i") }}
+			</p>
+			<form style="margin-top:25px;" action="{{ path('modif_resa') }}" method="post">
+
+				<input type="hidden" name="numResa" value="{{ resa.numResa }}">
+				<input type="hidden" name="emailResa" value="{{ resa.emailClient }}">
+
+				<table>
+					<tr>
+						<td><label for="nbrPers">Modifier nombre de personne :</label></td>
+						<td><input type="text" name="nbPers" value="{{ resa.nbrPersResa }}"></td>
+					</tr>
+				</table>
+
+				<input type="submit" class="btn" value="Modifier la réservation">
+				<a class="btn red" href="{{ path('suppr_resa', {'id': resa.numResa} ) }}">Supprimer la réservation</a>
+
+			</form>
+		</div>
+	</div>
 
 {% endblock %}
