@@ -1,1 +1,18 @@
-<p>Française, Mexicain, Thailandais, Tradi ch'ti, Végétarien, Pizzeria, Italien, Créole, Burger, Indien, Chinois, Japonais</p>
+	<div class="grid-6 has-gutter">
+
+	{% for categorie in listeCatImg %}
+
+	<div class="categorie">
+			<h4><a href="{{ path('tous_restau_categorie', {'categorie': categorie.numeroCat}) }}">{{ categorie.nomCat }}</a></h4>
+			<img src="{{ "/LilleBio/web" ~ categorie.URLImg }}" alt="{{ categorie.nomImg}}">
+
+	</div>
+
+
+	{% endfor %}
+
+
+</div>
+
+
+
