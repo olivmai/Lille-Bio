@@ -87,15 +87,15 @@ $app->post('/reservation', function (Request $request) use ($app) {
 
 	// Si la réservation est OK
 	// Préparation du message de confirmation
-	$message = \Swift_Message::newInstance()
-        ->setSubject('[LilleBio] Confirmation de réservation')
-        ->setFrom(array('lillebio.cnam@gmail.com'))
-        ->setTo(array('oliviermairet@gmail.com'))
-        ->setBody('Bonjour,<br><br>Nous avons le plaisir de vous confirmer votre réservation pour le <strong>'.date("d/m/Y", $request->request->get('date')).' à '.$request->request->get('heure').'</strong> dans le restaurant : <strong>'.$reservation['nomRest'].'</strong>.<br><br>Vous avez réservé pour <strong>'.$request->request->get('nbPers').' personne(s)</strong> au nom de <strong>'.$request->request->get('prenom').' '.$request->request->get('nom').'</strong>.<br><br>Votre numéro de réservation est le <strong>'.$reservation['numResa'].'</strong>. Vous pouvez consulter et modifier ou supprimer cette réservation sur le site dans la <a href="http://lillebio-cnam.pe.hu/web/mes-reservations/recherche">rubrique "mes réservations"</a> en y précisant l\'adresse email utilisée lors de votre réservation et ce numéro.<br><br>Bon appétit et à bientôt sur notre site !!<br><br>L\'équipe LilleBio', 'text/html');
+	$subject = '[LilleBio] Confirmation de réservation';
+    $to = $request->request->get('email');
+    $message = 'Bonjour,<br><br>Nous avons le plaisir de vous confirmer votre réservation pour le <strong>'.date("d/m/Y", $request->request->get('date')).' à '.$request->request->get('heure').'</strong> dans le restaurant : <strong>'.$reservation['nomRest'].'</strong>.<br><br>Vous avez réservé pour <strong>'.$request->request->get('nbPers').' personne(s)</strong> au nom de <strong>'.$request->request->get('prenom').' '.$request->request->get('nom').'</strong>.<br><br>Votre numéro de réservation est le <strong>'.$reservation['numResa'].'</strong>. Vous pouvez consulter et modifier ou supprimer cette réservation sur le site dans la rubrique <a href="http://lillebio-cnam.pe.hu/mes-reservations/recherche">"mes réservations"</a> en y précisant l\'adresse email utilisée lors de votre réservation et ce numéro.<br><br>Bon appétit et à bientôt sur notre site !!<br><br>L\'équipe LilleBio';
+    // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+    $header  = "Content-type: text/html; charset=UTF-8" . "\r\n";
 
     // Essai d'envoi du message
     // Si le message est bien envoyé
-    if ($app['mailer']->send($message)) {
+    if (mail($to, $subject, $message, $header)) {
     	// Enregistrement du message de confirmation en SESSION
         $app['session']->getFlashBag()->add('msg_success', 'La réservation a bien été enregistrée. Vous allez recevoir un email de confirmation à l\'adresse mentionnée');
         // Redirection vers la page d'accueil avec affichage du msg de confirmation
