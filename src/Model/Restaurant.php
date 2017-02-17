@@ -61,7 +61,7 @@ class Restaurant extends Model
 
 	public function getRestau($id)
 	{
-		$sql_restau = "SELECT i.nomImg nom_image, i.urlImg url_img, r.numRest num_restau, r.nomRest nom_restau, r.catRest cat_restau, r.etoileRest etoiles, r.villeRest ville, r.formRepasRest formule, r.rueRest rue, r.cpRest cp, c.nomCat
+		$sql_restau = "SELECT i.nomImg nom_image, i.urlImg url_img, r.numRest num_restau, r.nomRest nom_restau, r.catRest cat_restau, r.etoileRest etoiles, r.villeRest ville, r.formRepasRest formule, r.rueRest rue, r.cpRest cp, c.nomCat, r.emailRest email, r.telRest tel, r.catRest numCat, r.nbreTableRest nbTable
 			FROM Restaurant r
 			LEFT JOIN Image i
 			ON i.numImg = r.numImg

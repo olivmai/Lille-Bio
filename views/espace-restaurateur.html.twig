@@ -16,34 +16,36 @@
 
 	{% set numRest = app.session.get('numRest') %}
 	{{ dump(numRest) }}
+	{{ dump(data) }}
+	{{ dump(liste_categorie) }}
 
 <section id="coordonnees">
 	<header><h1>Informations sur le restaurant</h1></header>
-		<form name="Coordonnees" method="post"action="script_espace_restaurateur.php">	
+		<form name="Coordonnees" method="post"action="{{ path ('enregistrer_coordonnees')}}">	
 			<table >
 				<tr>
 					<td colspan="2"><label for = "Nom"><b>Nom</b></label></td>
-					<td colspan="9"><input id="Nom" type="Text" name="Nom" size="50" placeholder="Nom de votre restaurant"></td>
+					<td colspan="9"><input id="Nom" type="Text" name="Nom" size="50" placeholder="Nom de votre restaurant" value="{{ data.restaurant.nom_restau }}"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><label for = "Adresse"><b>Adresse</b></label></td>
-					<td colspan="9"><input id="Adresse" type="Text" name="Adresse" size="50" placeholder="N° Rue, Avenue,Boulevard"></td>
+					<td colspan="9"><input id="Adresse" type="Text" name="Adresse" size="50" placeholder="N° Rue, Avenue,Boulevard" value="{{ data.restaurant.rue }}"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><label for="CodePostal"><b>Code postal</b></label></td>
-					<td colspan="2"> <input id="CodePostal" type = "Text" name="CodePostal" size="50"></td>
+					<td colspan="2"> <input id="CodePostal" type = "Text" name="CodePostal" size="50" value="{{ data.restaurant.cp }}"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><label for="Ville"><b>Ville</b></label></td>
-					<td colspan="9"> <input id="Ville" type = "Text" name = "Ville" size = "50"></td>
+					<td colspan="9"> <input id="Ville" type = "Text" name = "Ville" size = "50" value="{{ data.restaurant.ville }}"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><label for="Telephone"><b>Téléphone</b></label></td>
-					<td colspan="4"><input id ="Telephone" type= "Text" name ="Telephone" size = "50" placeholder="+33(0) "></td>
+					<td colspan="4"><input id ="Telephone" type= "Text" name ="Telephone" size = "50" placeholder="+33(0) " value="{{ data.restaurant.tel }}"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><label for ="Email"><b>Email</b></label></td>
-					<td colspan="5"> <input id ="Email" type="Text" name="Email" size = "50" placeholder="example@boitemail.com"></td>
+					<td colspan="5"> <input id ="Email" type="Text" name="Email" size = "50" placeholder="example@boitemail.com" value="{{ data.restaurant.email }}"></td>
 				</tr>
 				<tr>
 					<td> </td>
@@ -57,43 +59,43 @@
 		<table>
 			<tr>
 				<td colspan="3"><label for = "Nombre de tables"><b>Nombre de tables</b></label></td>
-				<td colspan="4"><input id="Nombre de tables" type="Text" name="Nombre_tables" size="20"></td>
+				<td colspan="4"><input id="Nombre de tables" type="Text" name="Nombre_tables" size="20"value="{{ data.restaurant.nbTable }}"></td>
 			</tr>
-			<tr>
-				<td colspan="3"><label for="Nombre de couverts"><b>Nombre de couverts</b></label></td>
-				<td colspan="4"> <input id="Nombre de couverts" type = "Text" name="Nombre_couverts" size="20"></td>
-			</tr>
+			
 			<tr>
 				<td colspan="3"><label for="Categorie"><b>Catégorie</b></label></td>
-				<td> </td>
+				
 				<td>
-					<?php 
-					 include 'script_list_cat.php';
-					
-					?>
+					<select>
+						{% set cat = data.restaurant.numCat %}
+						{% for categorie in liste_categorie %}
+						<option value ="{{ categorie.numCat }}" {% if cat == categorie.numCat %} selected {% endif %}>{{ categorie.nomCat }}</option>
+						{% endfor %}
+					</select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3"><label for="Nombre etoiles"><b>Nombre d'étoiles</b></label></td>
 				<td colspan="4"> 
-					<select name="Nombre_etoiles">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>   
+					<select name="Nombre_etoiles" value="{{ data.restaurant.etoiles}}">
+						<option value="1" {% if data.restaurant.etoiles == "1" %} selected {% endif %}>1</option>
+						<option value="2" {% if data.restaurant.etoiles == "2" %} selected {% endif %}>2</option>
+						<option value="3" {% if data.restaurant.etoiles == "3" %} selected {% endif %}>3</option>   
 					</select> 
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3"><label for ="Formule"><b>Formule</b></label></td>
 				<td colspan="4">
-					<select name="Formule">
-						<option value="carte">Carte</option>
-						<option value="menu">Menu</option>
-						<option value="complet">Complet</option>   
+					<select name="Formule" value="{{ data.restaurant.formule}}">
+						<option value="carte" {% if data.restaurant.formule == "carte" %} selected {% endif %}>Carte</option>
+						<option value="menu" {% if data.restaurant.formule == "menu" %} selected {% endif %}>Menu</option>
+						<option value="complet" {% if data.restaurant.formule == "complet" %} selected {% endif %}>Complet</option>   
 					</select> 
 				</td>
 			</tr>
 			<tr>
+				<input type='hidden' name='numRest' value='{{numRest}}'>
 				<td colspan="4"><input class="btn" type="submit" value="Enregistrez"> </td>
 			</tr>
 		</table>
@@ -115,7 +117,7 @@
 							<td><h4>Prix</h4></td>
 							
 						</tr>
-					<form name="Entrees" method="post" action="script_formulaire_entrees.php">
+					<form name="Entrees" method="post" action="{{ path ('enregistrer_entree')}}">
 						<tr>
 							<td colspan="4"><input id="Entree1" type="Text" name="Entree1" size="30"></td>
 							<input type='hidden' name='categorie1' value='Entree'>
@@ -147,11 +149,11 @@
 							
 						</tr>
 						<tr>
-							
+							<input type='hidden' name='numRest' value='{{numRest}}'>
 							<td colspan="4"><input class ="btn" type="submit" name="EnregistrerEntrees" value = "Enregistrez" ></td>
 						</tr>
 					</form>
-					<form name="Plats" method="post" action="script_formulaire_plats.php">
+					<form name="Plats" method="post" action="{{ path ('enregistrer_plat')}}" >
 						<tr>
 							<td colspan="5"> </td>
 						</tr>
@@ -191,11 +193,11 @@
 							<td><input id="PrixPlat5" type="Text" name="PrixPlat5" size="8"></td>
 						</tr>
 						<tr>
-							
+							<input type='hidden' name='numRest' value='{{numRest}}'>
 							<td colspan="4"><input class="btn" type="submit" name="EnregistrerPlats" value = "Enregistrez" ></td>
 						</tr>
 					</form>
-					<form name="Desserts" method="post" action="script_formulaire_desserts.php">
+					<form name="Desserts" method="post" action="{{ path ('enregistrer_dessert')}}">
 						<tr>
 							<td colspan="4"><h4>Desserts</h4></td>
 							
@@ -233,14 +235,14 @@
 							
 						</tr>
 						<tr>
-							
+							<input type='hidden' name='numRest' value='{{numRest}}'>
 							<td colspan="4"><input  class="btn" type="submit" name="EnregistrerDesserts" value = "Enregistrez" ></td>
 						</tr>
 					</table>
 				</form>
 				</td>
 				<td>
-				<form name="Menus1" method="post"action="script_menus.php">
+				<form name="Menus1" method="post" action="{{ path ('enregistrer_menu1')}}">
 					<table>
 						<tr>
 							<td colspan="5"><h1>Menus</h1></td>
@@ -277,6 +279,7 @@
 							
 						</tr>
 						<tr>
+							<input type='hidden' name='numRest' value='{{numRest}}'>
 							<td colspan="4"><input  class="btn" type="submit" name="EnregistrerMenu1" value = "Enregistrez" ></td>
 						</tr>
 					</form>
@@ -314,6 +317,7 @@
 							<input type='hidden' name='catDessertMenu' value='Dessert'>
 						</tr>
 						<tr>
+							<input type='hidden' name='numRest' value='{{numRest}}'>
 							<td colspan="4"><input  class="btn" type="submit" name="EnregistrerMenu1" value = "Enregistrez" ></td>
 						</tr>
 					</form>
@@ -355,7 +359,7 @@
 							<td colspan="5"> </td>
 						</tr>
 						<tr>
-							
+							<input type='hidden' name='numRest' value='{{numRest}}'>
 							<td colspan="5"><input class="btn" type="submit" name="EnregistrerMenus" value="Enregistrez"></td>
 						</tr>
 				</table>

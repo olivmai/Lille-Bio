@@ -45,9 +45,11 @@ $app->post('/exemple', function (Request $request) use ($app) {
 })->bind('exemple');
 
 // Espace restaurateur
-$app->get('/espace-restaurateur', function ($id = null) use ($app) {
-	//$pageRestau = $app['model.restaurant']->getRestau($id);
-	return $app['twig']->render('espace-restaurateur.html.twig');
+$app->get('/espace-restaurateur', function () use ($app) {
+	$id = $app['session']->get('numRest');
+	$listeCategories = $app['model.recherche']->listeCategories();
+	$pageRestau = $app['model.restaurant']->getRestau($id);
+	return $app['twig']->render('espace-restaurateur.html.twig', array('data' => $pageRestau,'liste_categorie' => $listeCategories));
 })->bind('espace_restau');
 
 // Recherche restau
@@ -160,6 +162,38 @@ $app->post('/enregistrer-restaurateur', function (Request $request) use ($app) {
 	}
 })->bind('enregistrer_restau');
 
+
+// Inscription restaurateur
+$app->post('/enregistrer_coordonnees', function (Request $request) use ($app) {
+	$insertionCoordonnees = $app['model.restaurateur']->infosrestaurateur($request);
+	if ($insertionCoordonnees){return $app->redirect($app["url_generator"]->generate("espace_restau"));};
+})->bind('enregistrer_coordonnees');
+
+
+// Insertion des entrées
+$app->post('/enregistrer_entree', function (Request $request) use ($app) {
+	$infosEntrees = $app['model.restaurateur']->infosEntrees($request);
+	if ($infosEntrees){return $app->redirect($app["url_generator"]->generate("espace_restau"));};
+})->bind('enregistrer_entree');
+
+// Insertion des plats
+$app->post('/enregistrer_plat', function (Request $request) use ($app) {
+	$infosPlats = $app['model.restaurateur']->infosPlats($request);
+	if ($infosPlats){return $app->redirect($app["url_generator"]->generate("espace_restau"));};
+})->bind('enregistrer_plat');
+
+$app->post('/enregistrer_dessert', function (Request $request) use ($app) {
+	$infosDesserts = $app['model.restaurateur']->infosDesserts($request);
+	if ($infosDesserts){return $app->redirect($app["url_generator"]->generate("espace_restau"));};
+})->bind('enregistrer_dessert');
+
+$app->post('/enregistrer_menu1', function (Request $request) use ($app) {
+	$infosMenu1 = $app['model.restaurateur']->infosMenu1($request);
+	if ($infosMenu1){return $app->redirect($app["url_generator"]->generate("espace_restau"));};
+})->bind('enregistrer_menu1');
+
+
+
 // form login
 $app->get('/connexion', function () use ($app) {
 	return $app['twig']->render('formulaire/connexion.html.twig');
@@ -172,6 +206,7 @@ $app->post('/verifconnexion', function(Request $request) use($app) {
 		return $app->redirect($app["url_generator"]->generate("espace_restau"));
 	}
 })->bind('verifconnexion');
+
 
 ///////////////////////////////////
 ///// AUTRES PAGES ///////////////
