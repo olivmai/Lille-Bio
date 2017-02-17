@@ -11,8 +11,10 @@ $app->get('/', function () use ($app) {
 	$troisDerniersRestau = $app['model.restaurant']->troisDerniersRestau();
 	$trenteProchainsJours = $app['model.recherche']->trenteProchainsJours();
 	$listeCategories = $app['model.recherche']->listeCategories();
+	$listeCategorieImg = $app['model.restaurant']->categorieImages();
 	// Appel de la vue page d'accueil
-    return $app['twig']->render('index.html.twig', array('listeRestau' => $troisDerniersRestau, 'date' => $trenteProchainsJours, 'listeCat' => $listeCategories));
+    return $app['twig']->render('index.html.twig', array('listeRestau' => $troisDerniersRestau, 'date' => $trenteProchainsJours, 'listeCat' => $listeCategories, 'listeCatImg' => $listeCategorieImg));
+    
 })->bind('home');
 
 // Aide utilisateurs
@@ -69,6 +71,12 @@ $app->get('/liste-restaurants', function () use ($app) {
 	$listeRestau = $app['model.restaurant']->tousLesRestau();
 	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
 })->bind('tous_restau');
+
+// Liste restaurant par catégorie
+$app->get('/liste-restaurants/{categorie}', function ($categorie) use ($app) {
+	$listeRestau = $app['model.restaurant']->RestaurantparCategorie($categorie);
+	return $app['twig']->render('liste-restaurant.html.twig', array('listeRestau' => $listeRestau));
+})->bind('tous_restau_categorie');
 
 ////////////////////////////
 ///// RESERVATIONS /////////
@@ -154,6 +162,7 @@ $app->post('/enregistrer-restaurateur', function (Request $request) use ($app) {
 	}
 })->bind('enregistrer_restau');
 
+
 // Inscription restaurateur
 $app->post('/enregistrer_coordonnees', function (Request $request) use ($app) {
 	$insertionCoordonnees = $app['model.restaurateur']->infosrestaurateur($request);
@@ -183,6 +192,21 @@ $app->post('/enregistrer_menu1', function (Request $request) use ($app) {
 	if ($infosMenu1){return $app->redirect($app["url_generator"]->generate("espace_restau"));};
 })->bind('enregistrer_menu1');
 
+
+
+// form login
+$app->get('/connexion', function () use ($app) {
+	return $app['twig']->render('formulaire/connexion.html.twig');
+})->bind('connexion');
+// connexion redirection
+$app->post('/verifconnexion', function(Request $request) use($app) {
+	$etat = $app['model.restaurateur']->connexion($request);
+	var_dump($etat);
+	if ($etat){
+		$app['session']->set('numRest', $etat);
+		return $app->redirect($app["url_generator"]->generate("espace_restau"));
+	}
+})->bind('verifconnexion');
 
 
 ///////////////////////////////////
