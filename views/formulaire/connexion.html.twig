@@ -2,12 +2,16 @@
 
 {% block content %}
 
+<h1 class="titre">Connectez-vous pour accéder à votre espace</h1>
+
 <form name="identification" action="{{ path('verifconnexion') }}" method="post" class="formuconnexion">
-		<h3>Identifiant</h3>
-		<input type="text" name="identifiant" placeholder="Entrez votre adresse mail" id="formuinput"><br/>
-		<h3>Mot de passe</h3>
-		<input type="text" name="motdepasse" placeholder="Saisissez votre mot de passe" id="formuinput"><br/>
-		<input type="submit" name="envoiid" value="Connexion" class="btn">
+	<h3>Identifiant</h3>
+	<input type="text" name="identifiant" placeholder="Entrez votre adresse mail" id="formuinput"><br/>
+	<h3>Mot de passe</h3>
+	<input type="text" name="motdepasse" placeholder="Saisissez votre mot de passe" id="formuinput"><br/>
+	<input type="submit" name="envoiid" value="Connexion" class="btn">
 </form>
+
+<p style="text-align:center;">Vous n'avez pas encore d'espace restaurateur ? <a href="{{ path('inscription_restaurateur') }}" class="green">Rejoignez-nous !</a></p>
 
 {% endblock %}

@@ -31,12 +31,12 @@ class Restaurant extends Model
 
 		$sql_tousrestau_categorie =
 			"SELECT i.nomImg nom_image, i.urlImg url_img, i.numImg, c.numCat, c.nomCat, c.numImg, r.numRest num_restau, r.catRest, r.numImg, r.nomRest nom_restau, r.etoileRest etoiles, r.villeRest ville
-			FROM Restaurant R
-			LEFT JOIN Image I
-			ON I.numImg = r.numImg
-			LEFT JOIN Categorie C
-			ON C.numCat = R.catRest
-			WHERE R.catRest = ".$categorie;
+			FROM Restaurant r
+			LEFT JOIN Image i
+			ON i.numImg = r.numImg
+			LEFT JOIN Categorie c
+			ON c.numCat = r.catRest
+			WHERE r.catRest = ".$categorie;
 		$listerestaucategorie = $this->getDb()->fetchAll($sql_tousrestau_categorie);
 
 		return $listerestaucategorie;

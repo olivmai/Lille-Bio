@@ -14,7 +14,7 @@ $app->get('/', function () use ($app) {
 	$listeCategorieImg = $app['model.restaurant']->categorieImages();
 	// Appel de la vue page d'accueil
     return $app['twig']->render('index.html.twig', array('listeRestau' => $troisDerniersRestau, 'date' => $trenteProchainsJours, 'listeCat' => $listeCategories, 'listeCatImg' => $listeCategorieImg));
-    
+
 })->bind('home');
 
 // Aide utilisateurs
@@ -167,7 +167,6 @@ $app->get('/connexion', function () use ($app) {
 // connexion redirection
 $app->post('/verifconnexion', function(Request $request) use($app) {
 	$etat = $app['model.restaurateur']->connexion($request);
-	var_dump($etat);
 	if ($etat){
 		$app['session']->set('numRest', $etat);
 		return $app->redirect($app["url_generator"]->generate("espace_restau"));

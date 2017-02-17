@@ -2,6 +2,8 @@
 
     {% block content %}
 
+    {# Section moteur de recherche avec logo et slogan #}
+
     <section id="recherche">
 
         {% for alertSuccess in app.session.flashbag.get('msg_success') %}
@@ -19,6 +21,8 @@
         </p>
 
     </section>
+
+    {# Section "p'tis nouveaux" - Les liens des titres envoient vers la page du restau #}
 
     <section id="dernier">
         <h1 class="titre accueil">Les p'tits nouveaux !</h1>
@@ -48,25 +52,16 @@
         <a href="{{ path('tous_restau') }}" class="btn">Voir tous les restaurants > </a>
     </section>
 
-     <section id="categorie">
+    {# Section Catégories - Les liens des titres envoient vers la liste des restaus de la catégorie #}
+    <section id="categorie">
 
         <h1 class="titre accueil">Catégories</h1>
         <hr>
         {{include("categorie/categorie.html.twig")}}
 
-        <h1 class="titre accueil">Catégories</h1>
-        <hr>
-
-        <p>Formulaire d'exemple pour traitement des formulaires, vous pouvez voir comment il est traité en le remplissant et validant. Plus de détails dans les fichiers : app/routes.php et src/Model/Restaurant.php (fonction exemple()).</p>
-        <form action="{{ path('exemple') }}" method="post">
-            <input type="text" name="champ_01">,
-            <input type="text" name="champ_02">
-            <input type="text" name="champ_03">
-            <input type="text" name="champ_04">
-            <input type="submit">
-        </form>
-
     </section>
+
+    {# Section comment ça marche #}
 
     <section id="comment">
         <h1 class="titre accueil">Comment ça marche ?</h1>
@@ -99,7 +94,10 @@
         </div>
     </section>
 
+    {# Section restaurateurs, rejoignez-nous !! #}
+
      <section id="restaurateur">
+
         <h1 class="titre accueil">Vous êtes restaurateur ?</h1>
         <hr>
         <a href="{{ path('inscription_restaurateur') }}"><img src="{{ asset('/img/Banniere_restaurateur.jpg') }}" alt="Vous êtes restaurateur"/></a>

@@ -81,7 +81,7 @@ class Restaurateur extends Model
 		$idForm = $request->request-> get('identifiant');	
 		$mdpForm = $request->request-> get('motdepasse');
 		$id = "SELECT emailRest, mdpRest, numRest
- 			   FROM restaurant
+ 			   FROM Restaurant
  			   WHERE emailRest ='".$idForm."'"; 
  		$recupid = $this->getDb()->fetchAssoc($id);
 

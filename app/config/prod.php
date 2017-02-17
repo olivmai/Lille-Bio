@@ -7,6 +7,6 @@ $app['db.options'] = array(
     'host'     => 'localhost',
     'port'     => '3306',
     'dbname'   => 'lillebio',
-    'user'     => 'root',
-    'password' => 'root',
+    'user'     => 'xdNDev',
+    'password' => 'siana.ttoile',
 );
